@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from baza_vakansiy_it.vacancies.views import main_view, vacancies_view, vacancies_frontend_view, company_view, vacancy_view
+from vacancies.views import main_view, vacancies_view, vacancies_frontend_view, company_view, vacancy_view
 
 
 urlpatterns = [

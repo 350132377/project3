@@ -1,7 +1,5 @@
 from django.shortcuts import render
 
-from baza_vakansiy_it.vacancies.data import jobs, companies, specialties
-
 
 def main_view(request):
     return render(request, 'vacancies/index.html')

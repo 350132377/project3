@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from vacancies.views import main_view, vacancies_view, vacancies_frontend_view, company_view, vacancy_view
+from vacancies.views import custom_handler404, custom_handler500
 
 
 urlpatterns = [
@@ -26,3 +27,6 @@ urlpatterns = [
     path('companies/345/', company_view, name='company'),
     path('vacancies/22/', vacancy_view, name='vacancies_22'),
 ]
+
+handler404 = custom_handler404
+handler500 = custom_handler500

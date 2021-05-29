@@ -29,3 +29,9 @@ def company_view(request):
         'company': Company.objects.get(pk=6),
         'vacancies': Vacancy.objects.filter(company_id=6),
     })
+
+def custom_handler404(request, exception=None, template_name='tours/errors/404.html'):
+    return render(request, template_name)
+
+def custom_handler500(request, template_name='tours/errors/505.html'):
+    return render(request, template_name)

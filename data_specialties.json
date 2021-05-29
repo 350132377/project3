@@ -1,11 +1,13 @@
 [
   {
     "code": "frontend",
-    "title": "Фронтенд"
+    "title": "Фронтенд",
+    "picture": "https://place-hold.it/100x60"
   },
   {
     "code": "backend",
-    "title": "Бэкенд"
+    "title": "Бэкенд",
+    "picture": "https://place-hold.it/100x60"
   },
   {
     "code": "gamedev",

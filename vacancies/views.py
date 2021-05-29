@@ -9,7 +9,10 @@ def main_view(request):
     })
 
 def vacancy_view(request):
-    return render(request, 'vacancies/vacancy.html')
+    return render(request, 'vacancies/vacancy.html', context={
+        'company': Company.objects.get(pk=6),
+        'vacancy': Vacancy.objects.filter(company_id=6).first(),
+    })
 
 def vacancies_view(request):
     return render(request, 'vacancies/vacancies.html', context={
@@ -17,7 +20,9 @@ def vacancies_view(request):
     })
 
 def vacancies_frontend_view(request):
-    return render(request, 'vacancies/vacancy.html')
+    return render(request, 'vacancies/vacancies.html', context={
+        'vacancies': Vacancy.objects.filter(specialty_id=10),
+    })
 
 def company_view(request):
     return render(request, 'vacancies/company.html', context={

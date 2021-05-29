@@ -17,7 +17,7 @@
       <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
         <ul class="navbar-nav col-10">
           <li class="nav-item">
-            <a class="nav-link" href="#">Вакансии</a>
+            <a class="nav-link" href="{% url 'vacancies' %}">Вакансии</a>
           </li>
 
         </ul>
@@ -63,7 +63,7 @@
             <img class="mx-auto d-block" src="{{ specialty.picture }}" width="80" height="80" alt="">
             <div class="card-body">
               <p class="card-text mb-2">{{ specialty.title }}</p>
-              <p class="card-text"><a href="#">5 вакансий</a></p>
+              <p class="card-text"><a href="{% url 'frontend' %}">5 вакансий</a></p>
             </div>
           </div>
         </div>
@@ -77,12 +77,12 @@
         {% for company in companies %}
         <div class="col-6 col-md-6 col-lg-3">
           <div class="card pt-4 text-center mb-4">
-            <a href="#" style="max-width: 150px;" class="mx-auto d-block">
+            <a href="{% url 'company' %}" style="max-width: 150px;" class="mx-auto d-block">
               <img class="mx-auto d-block mw-100" src="{{ company.logo }}" alt="">
             </a>
             <div class="card-body">
               <p>{{ company.title }}</p>
-              <p class="card-text"><a href="#">{{ company.employee_count }} вакансий</a></p>
+              <p class="card-text"><a href="{% url 'company' %}">{{ company.employee_count }} вакансий</a></p>
             </div>
           </div>
         </div>

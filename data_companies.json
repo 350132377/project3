@@ -1,7 +1,7 @@
 [
   {
     "id": "1",
-    "name": "workiro",
+    "title": "workiro",
     "location": "Новосибирск",
     "logo": "https://place-hold.it/100x60",
     "description": "Разрабатываем мобильные приложения и сервисы для сферы онлайн-обучения.",
@@ -9,7 +9,7 @@
   },
   {
     "id": "2",
-    "name": "rebelrage",
+    "title": "rebelrage",
     "location": "Москва",
     "logo": "https://place-hold.it/100x60",
     "description": "Мобильные сервисы, программное обеспечение, веб-сайты, мобильные приложения.",
@@ -17,7 +17,7 @@
   },
   {
     "id": "3",
-    "name": "staffingsmarter",
+    "title": "staffingsmarter",
     "location": "Москва",
     "logo": "https://place-hold.it/100x60",
     "description": "Сервис онлайн-наблюдения за процессом сдачи экзамена с искусственным интеллектом",
@@ -26,15 +26,15 @@
   },
   {
     "id": "4",
-    "name": "evilthreath",
+    "title": "evilthreath",
     "location": "Москва",
-    "logo": "lhttps://place-hold.it/100x60",
+    "logo": "https://place-hold.it/100x60",
     "description": "Лидирующее в России и Восточной Европе ПО для проведения вебинаров и видео-конференций.",
     "employee_count": "36"
   },
   {
     "id": "5",
-    "name": "hirey",
+    "title": "hirey",
     "location": "Воронеж",
     "logo": "https://place-hold.it/100x60",
     "description": "Телекоммуникационные и платежные сервисы, которые помогают развиваться бизнесам во всем мире.",
@@ -42,7 +42,7 @@
   },
   {
     "id": "6",
-    "name": "swiftattack",
+    "title": "swiftattack",
     "location": "Москва",
     "logo": "https://place-hold.it/100x60",
     "description": "Разработка сложных веб-сервисов и мобильных приложений",
@@ -50,7 +50,7 @@
   },
   {
     "id": "7",
-    "name": "troller",
+    "title": "troller",
     "location": "Санкт-Петербург",
     "logo": "https://place-hold.it/100x60",
     "description": "Мобильное приложение, позволяющее примерить обувь и выбрать идеальную пару всего в 3 клика",
@@ -58,7 +58,7 @@
   },
   {
     "id": "8",
-    "name": "primalassault",
+    "title": "primalassault",
     "location": "Москва",
     "logo": "https://place-hold.it/100x60",
     "description": "Реализуем проекты любой сложности в digital-сфере",

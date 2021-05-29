@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Company(models.Model):
-    name = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
     location = models.CharField(max_length=45)
     logo = models.URLField(default='https://place-hold.it/100x60')
     description = models.TextField()

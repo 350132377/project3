@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+from vacancies.models import Company, Specialty, Vacancy
 
 def main_view(request):
     return render(request, 'vacancies/index.html')

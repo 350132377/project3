@@ -1,0 +1,67 @@
+[
+  {
+    "id": "1",
+    "name": "workiro",
+    "location": "Новосибирск",
+    "logo": "https://place-hold.it/100x60",
+    "description": "Разрабатываем мобильные приложения и сервисы для сферы онлайн-обучения.",
+    "employee_count": "10"
+  },
+  {
+    "id": "2",
+    "name": "rebelrage",
+    "location": "Москва",
+    "logo": "https://place-hold.it/100x60",
+    "description": "Мобильные сервисы, программное обеспечение, веб-сайты, мобильные приложения.",
+    "employee_count": "24"
+  },
+  {
+    "id": "3",
+    "name": "staffingsmarter",
+    "location": "Москва",
+    "logo": "https://place-hold.it/100x60",
+    "description": "Сервис онлайн-наблюдения за процессом сдачи экзамена с искусственным интеллектом",
+    "employee_count": "123"
+
+  },
+  {
+    "id": "4",
+    "name": "evilthreath",
+    "location": "Москва",
+    "logo": "lhttps://place-hold.it/100x60",
+    "description": "Лидирующее в России и Восточной Европе ПО для проведения вебинаров и видео-конференций.",
+    "employee_count": "36"
+  },
+  {
+    "id": "5",
+    "name": "hirey",
+    "location": "Воронеж",
+    "logo": "https://place-hold.it/100x60",
+    "description": "Телекоммуникационные и платежные сервисы, которые помогают развиваться бизнесам во всем мире.",
+    "employee_count": "21"
+  },
+  {
+    "id": "6",
+    "name": "swiftattack",
+    "location": "Москва",
+    "logo": "https://place-hold.it/100x60",
+    "description": "Разработка сложных веб-сервисов и мобильных приложений",
+    "employee_count": "79"
+  },
+  {
+    "id": "7",
+    "name": "troller",
+    "location": "Санкт-Петербург",
+    "logo": "https://place-hold.it/100x60",
+    "description": "Мобильное приложение, позволяющее примерить обувь и выбрать идеальную пару всего в 3 клика",
+    "employee_count": "230"
+  },
+  {
+    "id": "8",
+    "name": "primalassault",
+    "location": "Москва",
+    "logo": "https://place-hold.it/100x60",
+    "description": "Реализуем проекты любой сложности в digital-сфере",
+    "employee_count": "13"
+  }
+]

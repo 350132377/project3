@@ -1,0 +1,40 @@
+[
+  {
+    "code": "frontend",
+    "title": "Фронтенд"
+  },
+  {
+    "code": "backend",
+    "title": "Бэкенд"
+  },
+  {
+    "code": "gamedev",
+    "title": "Геймдев",
+    "picture": "https://place-hold.it/100x60"
+  },
+  {
+    "code": "devops",
+    "title": "Девопс",
+    "picture": "https://place-hold.it/100x60"
+  },
+  {
+    "code": "design",
+    "title": "Дизайн",
+    "picture": "https://place-hold.it/100x60"
+  },
+  {
+    "code": "products",
+    "title": "Продукты",
+    "picture": "https://place-hold.it/100x60"
+  },
+  {
+    "code": "management",
+    "title": "Менеджмент",
+    "picture": "https://place-hold.it/100x60"
+  },
+  {
+    "code": "testing",
+    "title": "Тестирование",
+    "picture": "https://place-hold.it/100x60"
+  }
+]

@@ -8,7 +8,7 @@ class Company(models.Model):
     employee_count = models.IntegerField()
 
 class Specialty(models.Model):
-    code = models.CharField(max_length=20)
+    code = models.CharField(max_length=20, unique=True)
     title = models.CharField(max_length=50)
     picture = models.URLField(default='https://place-hold.it/100x60')
 

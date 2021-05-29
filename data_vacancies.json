@@ -7,8 +7,8 @@
     "salary_min": "100000",
     "salary_max": "150000",
     "published_at": "2020-03-11",
-    "company_id": "3",
-    "specialty_id": "backend"
+    "company": "3",
+    "specialty": "backend"
   },
   {
     "id": "2",
@@ -18,8 +18,8 @@
     "salary_min": "80000",
     "salary_max": "90000",
     "published_at": "2020-03-11",
-    "company_id": "6",
-    "specialty_id": "backend"
+    "company": "6",
+    "specialty": "backend"
   },
   {
     "id": "3",
@@ -29,8 +29,8 @@
     "salary_min": "120000",
     "salary_max": "150000",
     "published_at": "2020-03-11",
-    "company_id": "1",
-    "specialty_id": "backend"
+    "company": "1",
+    "specialty": "backend"
   },
   {
     "id": "4",
@@ -40,8 +40,8 @@
     "salary_min": "80000",
     "salary_max": "90000",
     "published_at": "2020-03-11",
-    "company_id": "7",
-    "specialty_id": "backend"
+    "company": "7",
+    "specialty": "backend"
   },
   {
     "id": "5",
@@ -51,7 +51,7 @@
     "salary_min": "120000",
     "salary_max": "150000",
     "published_at": "2020-03-11",
-    "company_id": "8",
-    "specialty_id": "backend"
+    "company": "8",
+    "specialty": "backend"
   }
 ]

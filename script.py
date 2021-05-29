@@ -44,6 +44,6 @@ with open('data_vacancies.json', encoding='utf-8') as file:
             salary_min=vacancy_data['salary_min'],
             salary_max=vacancy_data['salary_max'],
             published_at=vacancy_data['published_at'],
-            company=vacancy_data['Company.id'],
-            specialty=vacancy_data['Specialty.code'],
+            company=Company.objects.get(id=vacancy_data['company']),
+            specialty=Specialty.objects.get(code=vacancy_data['specialty']),
         )

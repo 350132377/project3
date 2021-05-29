@@ -20,4 +20,7 @@ def vacancies_frontend_view(request):
     return render(request, 'vacancies/vacancy.html')
 
 def company_view(request):
-    return render(request, 'vacancies/company.html')
+    return render(request, 'vacancies/company.html', context={
+        'company': Company.objects.get(pk=6),
+        'vacancies': Vacancy.objects.filter(company_id=6),
+    })

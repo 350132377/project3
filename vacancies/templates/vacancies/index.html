@@ -63,7 +63,7 @@
             <img class="mx-auto d-block" src="{{ specialty.picture }}" width="80" height="80" alt="">
             <div class="card-body">
               <p class="card-text mb-2">{{ specialty.title }}</p>
-              <p class="card-text"><a href="{% url 'frontend' %}">5 вакансий</a></p>
+              <p class="card-text"><a href="{% url 'frontend' %}">{{ vacancies.count }} вакансий</a></p>
             </div>
           </div>
         </div>

@@ -1,4 +1,3 @@
-from django.db.models import Count
 from django.http import Http404
 from django.shortcuts import render
 
@@ -8,7 +7,7 @@ from vacancies.models import Company, Specialty, Vacancy
 def main_view(request):
     try:
         specialties = Specialty.objects.filter()
-        vacancies = Vacancy.objects.filter(specialty_id=10).annotate(count=Count('specialty_id'))
+        vacancies = Vacancy.objects.all()
         companies = Company.objects.all()
     except KeyError:
         raise Http404
@@ -61,5 +60,5 @@ def company_view(request):
 def custom_handler404(request, exception=None, template_name='vacancies/errors/404.html'):
     return render(request, template_name)
 
-def custom_handler500(request, template_name='vacancies/errors/505.html'):
+def custom_handler500(request, template_name='vacancies/errors/500.html'):
     return render(request, template_name)

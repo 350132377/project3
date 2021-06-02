@@ -1,4 +1,6 @@
+from django.core.exceptions import ValidationError
 from django.db import models
+
 
 class Company(models.Model):
     title = models.CharField(max_length=50)
@@ -23,3 +25,8 @@ class Vacancy(models.Model):
     salary_min = models.IntegerField()
     salary_max = models.IntegerField()
     published_at = models.DateField()
+
+    def clean(self):
+        if self.salary_min > self.salary_max:
+            raise ValidationError('Минимальный порог зарплаты больше, чем максимальный!')
+

@@ -18,17 +18,16 @@ def vacancies_view(request):
 
 def vacancy_view(request, company, vacancy):
     return render(request, 'vacancies/vacancy.html', context={
-        'company': Company.objects.filter(pk=company),
-        'vacancy': Vacancy.objects.filter(pk=vacancy),
+        'company': Company.objects.filter(title=company),
+        'vacancy': Vacancy.objects.filter(specialty=vacancy),
     })
 
 def vacancies_by_specialty(request, specialty):
     return render(request, 'vacancies/vacancies.html', context={
-        'speciality': Specialty.objects.filter(pk=specialty)
+        'speciality': Specialty.objects.filter(code=specialty)
     })
 
-def company_view(request, company, vacancy):
+def company_view(request, company):
     return render(request, 'vacancies/company.html', context={
-        'company': Company.objects.filter(pk=company),
-        'vacancies': Vacancy.objects.filter(pk=vacancy),
+        'company': Company.objects.filter(title=company),
     })

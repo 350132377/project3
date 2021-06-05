@@ -1,19 +1,25 @@
 from django.core.exceptions import ValidationError
 from django.db import models
 
+from baza_vakansiy_it.settings import MEDIA_COMPANY_IMAGE_DIR, MEDIA_SPECIALITY_IMAGE_DIR
+
+class User(models.Model):
+    name = models.CharField(max_length=20)
+
 
 class Company(models.Model):
     title = models.CharField(max_length=50)
     location = models.CharField(max_length=45)
-    logo = models.URLField(default='https://place-hold.it/100x60')
+    logo = models.ImageField(upload_to=MEDIA_COMPANY_IMAGE_DIR)
     description = models.TextField()
     employee_count = models.IntegerField()
+    owner = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
 
 
 class Specialty(models.Model):
     code = models.CharField(max_length=20, unique=True)
     title = models.CharField(max_length=50)
-    picture = models.URLField(default='https://place-hold.it/100x60')
+    picture = models.ImageField(upload_to=MEDIA_SPECIALITY_IMAGE_DIR)
 
 
 class Vacancy(models.Model):
@@ -29,4 +35,12 @@ class Vacancy(models.Model):
     def clean(self):
         if self.salary_min > self.salary_max:
             raise ValidationError('Минимальный порог зарплаты больше, чем максимальный!')
+
+
+class Application(models.Model):
+    written_username = models.CharField(max_length=20)
+    written_phone = models.IntegerField(max_length=11)
+    vacancy = models.ForeignKey(Vacancy, on_delete=models.CASCADE, related_name="applications")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="applications")
+
 

@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from vacancies.views import main_view, vacancies_view, vacancies_by_specialty, company_view, vacancy_view, mycompany_view, mycompany_create_view, mycompany_letsstart_view, myvacancy_view, myvacancy_create_view, vacancy_send
+from vacancies.views import main_view, vacancies_view, vacancies_by_specialty, company_view, vacancy_view, mycompany_view, mycompany_create_view, mycompany_letsstart_view, myvacancy_view, myvacancy_create_view, vacancy_send, myvacancy_id_view
 
 
 urlpatterns = [
@@ -34,7 +34,7 @@ urlpatterns = [
     path('mycompany/vacancies/', myvacancy_view.as_view(), name='myvacancy'),
     path('mycompany/vacancies/create/', myvacancy_create_view.as_view(), name='myvacancy_create'),
     path('vacancies/<vacancy_id>/send/', vacancy_send.as_view(), name='vacancy_send'),
-    path('mycompany/vacancies/<vacancy_id>'),
+    path('mycompany/vacancies/<vacancy_id>', myvacancy_id_view.as_view(), name='myvacancy_id'),
 ]
 
 if settings.DEBUG:

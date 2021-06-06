@@ -31,7 +31,7 @@ def company_view(request, company):
         'company': Company.objects.filter(title=company),
     })
 
-def mycompany_view(View):
+class mycompany_view(View):
     def get(self, request):
         return render(request, 'vacancies/company_edit.html', context={'form': MyCompanyForm})
 
@@ -42,7 +42,7 @@ def mycompany_view(View):
         return render(request, 'vacancies/company_edit.html', context={'form': form})
 
 
-def mycompany_create_view(View):
+class mycompany_create_view(View):
     def get(self, request):
         return render(request, 'vacancies/company_create.html', context={'form': MyCompanyCreateForm})
 
@@ -52,14 +52,14 @@ def mycompany_create_view(View):
             return redirect('company')
         return render(request, 'vacancies/company_create.html', context={'form': form})
 
-def mycompany_letsstart_view(View):
+class mycompany_letsstart_view(View):
     def post(self, request):
         form = MyCompanyCreateForm.request.POST
         if form.is_valid():
             return redirect('company')
         return render(request, 'vacancies/company_create.html', context={'form': form})
 
-def myvacancy_view(View):
+class myvacancy_view(View):
     def get(self, request):
         return render(request, 'vacancies/vacancy_edit.html', context={'form': MyVacanciesForm})
 
@@ -69,7 +69,7 @@ def myvacancy_view(View):
             return redirect('vacancy')
         return render(request, 'vacancies/vacancy_edit.html', context={'form': form})
 
-def myvacancy_create_view(View):
+class myvacancy_create_view(View):
     def get(self, request):
         return render(request, 'vacancies/vacancy_create.html', context={'form': MyVacanciesCreateForm})
 
@@ -79,9 +79,13 @@ def myvacancy_create_view(View):
             return redirect('vacancy')
         return render(request, 'vacancies/vacancy_create.html', context={'form': form})
 
-def vacancy_send(View):
+class vacancy_send(View):
     def post(self, request):
         form = VacancySendForm.request.POST
         if form.is_valid():
             return redirect('vacancy')
         return render(request, 'vacancies/vacancy_send.html', context={'form': form})
+
+class myvacancy_id_view(View):
+    def get(self, request):
+        return render(request, 'vacancies/vacancy_edit.html', context={'form': MyVacanciesForm})

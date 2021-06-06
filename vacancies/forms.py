@@ -1,5 +1,5 @@
 from django import forms
-from vacancies.models import Company, Vacancy
+from vacancies.models import Company, Vacancy, Application
 
 
 class MyCompanyCreateForm(forms.ModelForm):
@@ -21,3 +21,8 @@ class MyVacanciesForm(forms.ModelForm):
     class Meta:
         model = Vacancy
         fields = ('title', 'specialty', 'company', 'skills', 'description', 'salary_min', 'salary_max', 'published_at')
+
+class VacancySendForm(forms.ModelForm):
+    class Meta:
+        model = Application
+        fields = ('written_username', 'written_phone', 'vacancy', 'user')

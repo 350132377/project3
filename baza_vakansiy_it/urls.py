@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from vacancies.views import main_view, vacancies_view, vacancies_by_specialty, company_view, vacancy_view, mycompany_view, mycompany_create_view, mycompany_letsstart_view
+from vacancies.views import main_view, vacancies_view, vacancies_by_specialty, company_view, vacancy_view, mycompany_view, mycompany_create_view, mycompany_letsstart_view, myvacancy_view, myvacancy_create_view
 
 
 urlpatterns = [
@@ -28,12 +28,12 @@ urlpatterns = [
     path('vacancies/cat/<str:specialty>/', vacancies_by_specialty, name='vacancies_by_specialty'),
     path('vacancies/<str:vacancy>/', vacancy_view, name='vacancy'),
     path('companies/<str:company>/', company_view, name='company'),
-    path('vacancies/<vacancy_id>/send/'),
     path('mycompany/letsstart/', mycompany_letsstart_view.as_view(), name='letsstart_mycompany'),
     path('mycompany/create/', mycompany_create_view.as_view(), name='create_mycompany'),
     path('mycompany/', mycompany_view.as_view(), name='mycompany'),
-    path('mycompany/vacancies/'),
-    path('mycompany/vacancies/create/'),
+    path('mycompany/vacancies/', myvacancy_view.as_view(), name='myvacancy'),
+    path('mycompany/vacancies/create/', myvacancy_create_view.as_view(), name='myvacancy_create'),
+    path('vacancies/<vacancy_id>/send/'),
     path('mycompany/vacancies/<vacancy_id>'),
     path('login/'),
     path('register/'),

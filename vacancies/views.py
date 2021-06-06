@@ -33,31 +33,31 @@ def company_view(request, company):
 
 class mycompany_view(View):
     def get(self, request):
-        return render(request, 'vacancies/company_edit.html', context={'form': MyCompanyForm})
+        return render(request, 'vacancies/company-edit.html', context={'form': MyCompanyForm})
 
     def post(self, request):
-        form = MyCompanyCreateForm.request.POST
+        form = MyCompanyForm.request.POST
         if form.is_valid():
             return redirect('company')
-        return render(request, 'vacancies/company_edit.html', context={'form': form})
+        return render(request, 'vacancies/company-edit.html', context={'form': form})
 
 
 class mycompany_create_view(View):
     def get(self, request):
-        return render(request, 'vacancies/company_create.html', context={'form': MyCompanyCreateForm})
+        return render(request, 'vacancies/company-create.html', context={'form': MyCompanyCreateForm})
 
     def post(self, request):
         form = MyCompanyCreateForm.request.POST
         if form.is_valid():
             return redirect('company')
-        return render(request, 'vacancies/company_create.html', context={'form': form})
+        return render(request, 'vacancies/company-create.html', context={'form': form})
 
 class mycompany_letsstart_view(View):
     def post(self, request):
         form = MyCompanyCreateForm.request.POST
         if form.is_valid():
             return redirect('company')
-        return render(request, 'vacancies/company_create.html', context={'form': form})
+        return render(request, 'vacancies/company-create.html', context={'form': form})
 
 class myvacancy_view(View):
     def get(self, request):

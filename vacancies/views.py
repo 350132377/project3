@@ -52,5 +52,9 @@ def mycompany_create_view(View):
             return redirect('company')
         return render(request, 'vacancies/company_create.html', context={'form': form})
 
-def mycompany_letsstart_view(request):
-    return render(request)
+def mycompany_letsstart_view(View):
+    def post(self, request):
+        form = MyCompanyCreateForm.request.POST
+        if form.is_valid():
+            return redirect('company')
+        return render(request, 'vacancies/company_create.html', context={'form': form})

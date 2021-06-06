@@ -3,6 +3,7 @@ from django.db import models
 
 from baza_vakansiy_it.settings import MEDIA_COMPANY_IMAGE_DIR, MEDIA_SPECIALITY_IMAGE_DIR
 
+
 class User(models.Model):
     name = models.CharField(max_length=20)
 

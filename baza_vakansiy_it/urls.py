@@ -35,9 +35,6 @@ urlpatterns = [
     path('mycompany/vacancies/create/', myvacancy_create_view.as_view(), name='myvacancy_create'),
     path('vacancies/<vacancy_id>/send/', vacancy_send.as_view(), name='vacancy_send'),
     path('mycompany/vacancies/<vacancy_id>'),
-    path('login/'),
-    path('register/'),
-    path('logout/'),
 ]
 
 if settings.DEBUG:

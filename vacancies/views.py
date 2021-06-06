@@ -1,8 +1,7 @@
-from django.shortcuts import get_object_or_404
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+from django.views import View
 from vacancies.models import Company, Specialty, Vacancy
-
+from vacancies.forms import MyCompanyCreateForm
 
 
 def main_view(request):
@@ -31,3 +30,19 @@ def company_view(request, company):
     return render(request, 'vacancies/company.html', context={
         'company': Company.objects.filter(title=company),
     })
+
+def mycompany_view(request):
+    return render(request)
+
+def mycompany_create_view(View):
+    def get(self, request):
+        return render(request, 'vacancies/company.html', context={'form': MyCompanyCreateForm})
+
+    def post(self, request):
+        form = MyCompanyCreateForm.request.POST
+        if form.is_valid():
+            return redirect('company')
+        return render(request, 'vacancies/company_create.html', context={'form': form})
+
+def mycompany_letsstart_view(request):
+    return render(request)

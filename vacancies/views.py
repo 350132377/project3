@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from vacancies.models import Company, Specialty, Vacancy
-from vacancies.forms import MyCompanyCreateForm, MyCompanyForm, MyVacanciesCreateForm, MyVacanciesForm
+from vacancies.forms import MyCompanyCreateForm, MyCompanyForm, MyVacanciesCreateForm, MyVacanciesForm, VacancySendForm
 
 
 def main_view(request):
@@ -81,7 +81,7 @@ def myvacancy_create_view(View):
 
 def vacancy_send(View):
     def post(self, request):
-        form = MyCompanyCreateForm.request.POST
+        form = VacancySendForm.request.POST
         if form.is_valid():
             return redirect('vacancy')
         return render(request, 'vacancies/vacancy_send.html', context={'form': form})

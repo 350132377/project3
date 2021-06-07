@@ -38,13 +38,13 @@
       </div>
       <div class="col-12 col-lg-8">
         <section class="pl-3">
-          <a href="{% url 'vacancy' specialty %}"><img src="https://place-hold.it/130x80" width="130" height="80" alt=""></a>
+          <a href="#"><img src="https://place-hold.it/130x80" width="130" height="80" alt=""></a>
           <div class="d-flex align-items-baseline align-content-baseline">
             <h1 class="h2 mt-4 font-weight-bold" >{{ vacancy.title }}</h1>
             <p class="m-0 pl-3">{{ vacancy.salary_min }} – {{ vacancy.salary_max }} Р</p>
           </div>
           <p class="mt-2">{{ vacancy.skills }}</p>
-          <p class="text-muted mb-4">{{ company.title }} (15-30 человек), {{ company.location }} или удаленно</p>
+          <p class="text-muted mb-4">{{ vacancy.company_id }} (15-30 человек), {{ vacancy.company_id }} или удаленно</p>
           <div style="line-height: 1.8;">
             {{ vacancy.description|safe }}
           </div>

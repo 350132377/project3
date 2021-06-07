@@ -82,7 +82,7 @@
             </a>
             <div class="card-body">
               <p>{{ company.title }}</p>
-              <p class="card-text"><a href="{% url 'company' company.title %}">{{ company.employee_count }} вакансий</a></p>
+              <p class="card-text"><a href="{% url 'company' company.title %}">{{ company.vacancies.count }} вакансий</a></p>
             </div>
           </div>
         </div>

@@ -26,4 +26,3 @@ class VacancySendForm(forms.ModelForm):
     class Meta:
         model = Application
         fields = ('written_username', 'written_phone', 'vacancy', 'user')
-

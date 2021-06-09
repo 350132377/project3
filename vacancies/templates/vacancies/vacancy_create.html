@@ -54,7 +54,7 @@
           {% csrf_token %}
           {{ form.as_p }}
         </form>
-        <a href="{% url 'myvacancy_create' %}" class="btn btn-info mb-2">Добавить вакансию</a>
+        <input type="submit" class="btn btn-info" value="Добавить вакансию">
       </div>
     </section>
   </main>

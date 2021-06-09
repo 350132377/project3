@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.views import View
 from vacancies.models import Company, Specialty, Vacancy
 from vacancies.forms import MyCompanyCreateForm, MyCompanyForm, MyVacanciesCreateForm, MyVacanciesForm, VacancySendForm
+from django.contrib.auth.forms import UserCreationForm
+from django.views.generic import CreateView
+from django.contrib.auth.views import LoginView
 
 
 def main_view(request):
@@ -90,3 +93,12 @@ class vacancy_send(View):
 class myvacancy_id_view(View):
     def get(self, request):
         return render(request, 'vacancies/vacancy_edit.html', context={'form': MyVacanciesForm})
+
+class MySignupView(CreateView):
+   form_class = UserCreationForm
+   success_url = 'login'
+   template_name = 'vacancies/signup.html'
+
+class MyLoginView(LoginView):
+    redirect_authenticated_user = True
+    template_name = 'vacancies/login.html'

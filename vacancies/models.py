@@ -6,6 +6,7 @@ from baza_vakansiy_it.settings import MEDIA_COMPANY_IMAGE_DIR, MEDIA_SPECIALITY_
 
 class User(models.Model):
     name = models.CharField(max_length=20)
+    password = models.CharField(max_length=50, null=True)
 
 
 class Company(models.Model):

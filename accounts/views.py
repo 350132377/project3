@@ -8,17 +8,17 @@ class login_view(View):
         return render(request, 'vacancies/login.html', context={'form': MyLoginView})
 
     def post(self, request):
-        form = MyLoginView.request.POST
+        form = MyLoginView(request.POST)
         if form.is_valid():
             return redirect('login')
-        return render(request, 'accounts/login.html', context={'form': form})
+        return render(request, 'vacancies/login.html', context={'form': form})
 
 class signup_view(View):
     def get(self, request):
-        return render(request, 'accounts/signup.html', context={'form': MySignupView})
+        return render(request, 'vacancies/signup.html', context={'form': MySignupView})
 
     def post(self, request):
-        form = MySignupView.request.POST
+        form = MySignupView(request.POST)
         if form.is_valid():
             return redirect('signup')
-        return render(request, 'accounts/signup.html', context={'form': form})
+        return render(request, 'vacancies/signup.html', context={'form': form})

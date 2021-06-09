@@ -53,14 +53,14 @@ class mycompany_create_view(View):
         form = MyCompanyCreateForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
-            return redirect('company')
+            return redirect('mycompany')
         return render(request, 'vacancies/company-edit.html', context={'form': form})
 
 class mycompany_letsstart_view(View):
     def post(self, request):
         form = MyCompanyCreateForm(request.POST)
         if form.is_valid():
-            return redirect('company')
+            return redirect('create_mycompany')
         return render(request, 'vacancies/company-create.html', context={'form': form})
 
 class myvacancy_view(View):

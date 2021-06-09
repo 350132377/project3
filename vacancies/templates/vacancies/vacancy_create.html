@@ -11,7 +11,7 @@
     }
   </style>
 </head>
-
+{% load crispy_forms_tags %}
 <body>
   <header class="container mt-3">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -52,7 +52,7 @@
         <p class="mt-2">У вас пока нет вакансий, но вы можете создать первую!</p>
         <form action="" method="post">
           {% csrf_token %}
-          {{ form.as_p }}
+          {{ form|crispy }}
         </form>
         <input type="submit" class="btn btn-info" value="Добавить вакансию">
       </div>

@@ -11,7 +11,7 @@
     }
   </style>
 </head>
-
+{% load crispy_forms_tags %}
 <body>
   <header class="container mt-3">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -52,8 +52,8 @@
         <p class="mt-2">Пока мы думаем, что вы – частное лицо. Хотите создать карточку компании, разместить информаию и вакансии?</p>
         <form action="" method="post">
           {% csrf_token %}
-          {{ form.as_p }}
-          <input type="submit" class="btn btn-info"  value="Создать карточку компании">
+          {{ form|crispy }}
+          <input type="submit" class="btn btn-info"  value="Создать карточку компании" />
         </form>
       </div>
     </section>

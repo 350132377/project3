@@ -5,12 +5,12 @@ from vacancies.models import Company, Vacancy, Application, User
 class MyCompanyCreateForm(forms.ModelForm):
     class Meta:
         model = Company
-        fields = ('title', 'location', 'logo', 'description', 'employee_count')
+        fields = ('title', 'location', 'description', 'employee_count')
 
 class MyCompanyForm(forms.ModelForm):
     class Meta:
         model = Company
-        fields = ('title', 'location', 'logo', 'description', 'employee_count', 'owner')
+        fields = ('title', 'location', 'description', 'employee_count', 'owner')
 
 class MyVacanciesCreateForm(forms.ModelForm):
     class Meta:

@@ -53,8 +53,8 @@
         <form action="" method="post">
           {% csrf_token %}
           {{ form|crispy }}
+          <input type="submit" class="btn btn-info" value="Добавить вакансию" />
         </form>
-        <input type="submit" class="btn btn-info" value="Добавить вакансию">
       </div>
     </section>
   </main>

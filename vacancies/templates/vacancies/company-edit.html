@@ -51,8 +51,8 @@
         <aside class="pt-3 pb-4 px-4 mb-5 card">
           <h1 class="h4 pt-2 pb-2">Моя компания</h1>
           <div class="nav flex-column nav-pills">
-            <a class="nav-link active" href="#">1. Информация о&nbsp;компании</a>
-            <a class="nav-link" href="#">2. Вакансии</a>
+            <a class="nav-link active" href="{% url 'mycompany' %}">1. Информация о&nbsp;компании</a>
+            <a class="nav-link" href="{% url 'myvacancy' %}">2. Вакансии</a>
           </div>
         </aside>
       </div>
@@ -67,6 +67,7 @@
               </p>
               <form action="/echo" enctype="multipart/form-data">
                 <div class="row">
+
                   <div class="col-12 col-md-6">
                     <div class="form-group pb-2">
                       <label class="mb-2 text-dark" for="companyName">Название компании</label>
@@ -113,7 +114,7 @@
                 <div class="form-group">
                   <form action="" method="post">
                     {% csrf_token %}
-                    <input type="submit" class="btn btn-info" value="Сохранить">
+                    <input type="submit" class="btn btn-info" value="Сохранить" name="">
                   </form>
                 </div>
               </form>

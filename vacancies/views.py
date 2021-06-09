@@ -41,9 +41,20 @@ class mycompany_view(View):
     def post(self, request):
         form = MyCompanyForm(request.POST)
         if form.is_valid():
-            return redirect('company')
+            print(form.cleaned_data)
+            return redirect('mycompany')
         return render(request, 'vacancies/company-edit.html', context={'form': form})
 
+class myvacancy_view(View):
+    def get(self, request):
+        return render(request, 'vacancies/vacancy_edit.html', context={'form': MyVacanciesForm})
+
+    def post(self, request):
+        form = MyVacanciesForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            return redirect('myvacancy')
+        return render(request, 'vacancies/vacancy_edit.html', context={'form': form})
 
 class mycompany_create_view(View):
     def get(self, request):
@@ -53,25 +64,9 @@ class mycompany_create_view(View):
         form = MyCompanyCreateForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
+            form.save()
             return redirect('mycompany')
         return render(request, 'vacancies/company-edit.html', context={'form': form})
-
-class mycompany_letsstart_view(View):
-    def post(self, request):
-        form = MyCompanyCreateForm(request.POST)
-        if form.is_valid():
-            return redirect('create_mycompany')
-        return render(request, 'vacancies/company-create.html', context={'form': form})
-
-class myvacancy_view(View):
-    def get(self, request):
-        return render(request, 'vacancies/vacancy_edit.html', context={'form': MyVacanciesForm})
-
-    def post(self, request):
-        form = MyVacanciesForm(request.POST)
-        if form.is_valid():
-            return redirect('vacancy')
-        return render(request, 'vacancies/vacancy_edit.html', context={'form': form})
 
 class myvacancy_create_view(View):
     def get(self, request):
@@ -80,14 +75,27 @@ class myvacancy_create_view(View):
     def post(self, request):
         form = MyVacanciesCreateForm(request.POST)
         if form.is_valid():
-            return redirect('vacancy')
+            print(form.cleaned_data)
+            form.save()
+            return redirect('myvacancy')
         return render(request, 'vacancies/vacancy_create.html', context={'form': form})
+
+class mycompany_letsstart_view(View):
+    def get(self, request):
+        return render(request, 'vacancies/company-create.html', context={'form': MyCompanyCreateForm})
+
+    def post(self, request):
+        form = MyCompanyCreateForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            return redirect('mycompany')
+        return render(request, 'vacancies/company-create.html', context={'form': form})
 
 class vacancy_send(View):
     def post(self, request):
         form = VacancySendForm(request.POST)
         if form.is_valid():
-            return redirect('vacancy')
+            return redirect('myvacancy')
         return render(request, 'vacancies/vacancy_send.html', context={'form': form})
 
 class myvacancy_id_view(View):

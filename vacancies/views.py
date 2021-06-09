@@ -23,7 +23,7 @@ def vacancy_view(request, vacancy):
 
 def vacancies_by_specialty(request, specialty):
     return render(request, 'vacancies/vacancies.html', context={
-        'specialties': Specialty.objects.filter(code=specialty)
+        'speciality': Specialty.objects.filter(code=specialty)
     })
 
 def company_view(request, company):
@@ -36,7 +36,7 @@ class mycompany_view(View):
         return render(request, 'vacancies/company-edit.html', context={'form': MyCompanyForm})
 
     def post(self, request):
-        form = MyCompanyForm.request.POST
+        form = MyCompanyForm(request.POST)
         if form.is_valid():
             return redirect('company')
         return render(request, 'vacancies/company-edit.html', context={'form': form})
@@ -47,14 +47,15 @@ class mycompany_create_view(View):
         return render(request, 'vacancies/company-create.html', context={'form': MyCompanyCreateForm})
 
     def post(self, request):
-        form = MyCompanyCreateForm.request.POST
+        form = MyCompanyCreateForm(request.POST)
         if form.is_valid():
+            print(form.cleaned_data)
             return redirect('company')
-        return render(request, 'vacancies/company-create.html', context={'form': form})
+        return render(request, 'vacancies/company-edit.html', context={'form': form})
 
 class mycompany_letsstart_view(View):
     def post(self, request):
-        form = MyCompanyCreateForm.request.POST
+        form = MyCompanyCreateForm(request.POST)
         if form.is_valid():
             return redirect('company')
         return render(request, 'vacancies/company-create.html', context={'form': form})
@@ -64,7 +65,7 @@ class myvacancy_view(View):
         return render(request, 'vacancies/vacancy_edit.html', context={'form': MyVacanciesForm})
 
     def post(self, request):
-        form = MyVacanciesForm.request.POST
+        form = MyVacanciesForm(request.POST)
         if form.is_valid():
             return redirect('vacancy')
         return render(request, 'vacancies/vacancy_edit.html', context={'form': form})
@@ -74,14 +75,14 @@ class myvacancy_create_view(View):
         return render(request, 'vacancies/vacancy_create.html', context={'form': MyVacanciesCreateForm})
 
     def post(self, request):
-        form = MyVacanciesCreateForm.request.POST
+        form = MyVacanciesCreateForm(request.POST)
         if form.is_valid():
             return redirect('vacancy')
         return render(request, 'vacancies/vacancy_create.html', context={'form': form})
 
 class vacancy_send(View):
     def post(self, request):
-        form = VacancySendForm.request.POST
+        form = VacancySendForm(request.POST)
         if form.is_valid():
             return redirect('vacancy')
         return render(request, 'vacancies/vacancy_send.html', context={'form': form})

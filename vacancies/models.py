@@ -40,7 +40,7 @@ class Vacancy(models.Model):
 
 class Application(models.Model):
     written_username = models.CharField(max_length=20)
-    written_phone = models.IntegerField(max_length=11)
+    written_phone = models.IntegerField()
     vacancy = models.ForeignKey(Vacancy, on_delete=models.CASCADE, related_name="applications")
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="applications")
 

@@ -51,8 +51,8 @@
         <aside class="pt-3 pb-4 px-4 mb-5 card">
           <h1 class="h4 pt-2 pb-2">Мои вакансии</h1>
           <div class="nav flex-column nav-pills">
-            <a class="nav-link active" href="{% url 'mycompany' %}">1. Информация о&nbsp;компании</a>
-            <a class="nav-link" href="{% url 'myvacancy' %}">2. Вакансии</a>
+            <a class="nav-link" href="{% url 'mycompany' %}">1. Информация о&nbsp;компании</a>
+            <a class="nav-link active" href="{% url 'myvacancy' %}">2. Вакансии</a>
           </div>
         </aside>
       </div>
@@ -69,13 +69,13 @@
                 <div class="row">
                   <div class="col-12 col-md-6">
                     <div class="form-group pb-2">
-                      <label class="mb-2 text-dark" for="companyName">Название вакансии</label>
+                      <label class="mb-2 text-dark" for="vacancyName">Название вакансии</label>
                       <input class="form-control" type="text" value="Staffing Smarter" id="vacancyyName">
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
                     <div class="form-group">
-                      <label class="mb-2 text-dark" for="{{ company.logo }}">Логотип</label>
+                      <label class="mb-2 text-dark" for="{{ vacancy.logo }}">Логотип</label>
                       <div class="row align-items-center">
                         <div class="col-6">
                           <img src="https://place-hold.it/120x40" alt="" style="max-width: 120px;height: auto;">
@@ -95,20 +95,20 @@
                 <div class="row">
                   <div class="col-12 col-md-6">
                     <div class="form-group pb-2">
-                      <label class="mb-2 text-dark" for="companyTeam">Количество человек в компании</label>
-                      <input class="form-control" type="text" value="10-15" id="companyTeam">
+                      <label class="mb-2 text-dark" for="vacancyTeam">Количество человек в компании</label>
+                      <input class="form-control" type="text" value="10-15" id="vacancyTeam">
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
                     <div class="form-group pb-2">
-                      <label class="mb-2 text-dark" for="companyLocation">География</label>
-                      <input class="form-control" type="text" value="Рязань" id="companyLocation">
+                      <label class="mb-2 text-dark" for="vacancyLocation">География</label>
+                      <input class="form-control" type="text" value="Рязань" id="vacancyLocation">
                     </div>
                   </div>
                 </div>
                 <div class="form-group pb-2">
-                  <label class="mb-2 text-dark" for="companyInfo">Информация о&nbsp;компании</label>
-                  <textarea class="form-control" rows="4" id="companyInfo" style="color:#000;">Для тех, кто желает работать в&nbsp;комфортном офисе,&nbsp;&mdash; у&nbsp;нас их&nbsp;целых три. Исторически так сложилось, что руководство и&nbsp;менеджерский состав располагается в&nbsp;Москве (обусловлено близостью заказчиков), центр разработки&nbsp;&mdash; в&nbsp;Ульяновске, в&nbsp;т.&nbsp;ч. школа молодых разработчиков и&nbsp;QA-центр&nbsp;&mdash; в&nbsp;Казани.</textarea>
+                  <label class="mb-2 text-dark" for="vacancyInfo">Информация о&nbsp;компании</label>
+                  <textarea class="form-control" rows="4" id="vacancyInfo" style="color:#000;">Для тех, кто желает работать в&nbsp;комфортном офисе,&nbsp;&mdash; у&nbsp;нас их&nbsp;целых три. Исторически так сложилось, что руководство и&nbsp;менеджерский состав располагается в&nbsp;Москве (обусловлено близостью заказчиков), центр разработки&nbsp;&mdash; в&nbsp;Ульяновске, в&nbsp;т.&nbsp;ч. школа молодых разработчиков и&nbsp;QA-центр&nbsp;&mdash; в&nbsp;Казани.</textarea>
                 </div>
                 <div class="form-group">
                   <input type="submit" class="btn btn-info" value="Сохранить">

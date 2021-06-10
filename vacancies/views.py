@@ -15,7 +15,7 @@ def main_view(request):
 
 def vacancies_view(request):
     return render(request, 'vacancies/vacancies.html', context={
-        'specialties': Specialty.objects.all(),
+        'specialities': Specialty.objects.all(),
         'vacancies': Vacancy.objects.all()
     })
 
@@ -26,12 +26,14 @@ def vacancy_view(request, vacancy):
 
 def vacancies_by_specialty(request, specialty):
     return render(request, 'vacancies/vacancies.html', context={
-        'speciality': Specialty.objects.filter(code=specialty)
+        'specialities': Specialty.objects.filter(code=specialty),
+        'vacancies': Vacancy.objects.all()
     })
 
 def company_view(request, company):
     return render(request, 'vacancies/company.html', context={
-        'company': Company.objects.filter(title=company),
+        'company': Company.objects.all(),
+        'vacancies': Vacancy.objects.all()
     })
 
 class mycompany_view(View):
@@ -42,6 +44,7 @@ class mycompany_view(View):
         form = MyCompanyForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
+            form.update()
             return redirect('mycompany')
         return render(request, 'vacancies/company-edit.html', context={'form': form})
 

@@ -33,7 +33,8 @@ def vacancies_by_specialty(request, specialty):
 def company_view(request, company):
     return render(request, 'vacancies/company.html', context={
         'specialities': Specialty.objects.all(),
-        'vacancies': Vacancy.objects.all()
+        'vacancies': Vacancy.objects.all(),
+        'companies': Company.objects.filter(title=company)
     })
 
 class mycompany_view(View):

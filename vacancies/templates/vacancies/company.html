@@ -34,9 +34,10 @@
     <div class="navbar mt-5">
       <p><a href="/">Назад</a></p>
     </div>
+    {% for company in companies %}
     <section>
       <div class="text-center">
-        <img src="{{ company.logo }}" width="130" height="80" alt="">
+        <img src="{{ company.logo.url }}" width="130" height="80" alt="">
       </div>
       <h1 class="h1 text-center mx-auto mt-0 pt-1" style="font-size: 70px;"><strong>{{ company.title }}</strong></h1>
       <p class="text-center pt-1">Компания, {{ company.location }}, {{ company.employee_count }} вакансий</p>
@@ -63,5 +64,6 @@
         </div>
       </div>
     </section>
+    {% endfor %}
   </main>
   {% endblock %}

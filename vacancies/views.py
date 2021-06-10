@@ -6,13 +6,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView
 
-
+# work
 def main_view(request):
     return render(request, 'vacancies/index.html', context={
         'specialties': Specialty.objects.all(),
         'companies': Company.objects.all(),
     })
-
+# work
 def vacancies_view(request):
     return render(request, 'vacancies/vacancies.html', context={
         'specialities': Specialty.objects.all(),
@@ -21,9 +21,9 @@ def vacancies_view(request):
 
 def vacancy_view(request, vacancy):
     return render(request, 'vacancies/vacancy.html', context={
-        'vacancy': Vacancy.objects.filter(specialty_id=vacancy),
+        'vacancy': Vacancy.objects.all(),
     })
-
+# work
 def vacancies_by_specialty(request, specialty):
     return render(request, 'vacancies/vacancies.html', context={
         'specialities': Specialty.objects.filter(code=specialty),
@@ -32,7 +32,7 @@ def vacancies_by_specialty(request, specialty):
 
 def company_view(request, company):
     return render(request, 'vacancies/company.html', context={
-        'company': Company.objects.all(),
+        'specialities': Specialty.objects.all(),
         'vacancies': Vacancy.objects.all()
     })
 

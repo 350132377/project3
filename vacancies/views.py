@@ -22,18 +22,15 @@ def vacancies_view(request):
 def vacancy_view(request, vacancy):
     return render(request, 'vacancies/vacancy.html', context={
         'vacancies': Vacancy.objects.filter(title=vacancy),
-        'companies': Company.objects.all(),
     })
 # work
 def vacancies_by_specialty(request, specialty):
     return render(request, 'vacancies/vacancies.html', context={
         'specialities': Specialty.objects.filter(code=specialty),
-        'vacancies': Vacancy.objects.all()
     })
 # work
 def company_view(request, company):
     return render(request, 'vacancies/company.html', context={
-        'vacancies': Vacancy.objects.all(),
         'companies': Company.objects.filter(title=company),
     })
 

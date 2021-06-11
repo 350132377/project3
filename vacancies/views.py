@@ -16,7 +16,6 @@ def main_view(request):
 def vacancies_view(request):
     return render(request, 'vacancies/vacancies.html', context={
         'specialities': Specialty.objects.all(),
-        'vacancies': Vacancy.objects.all()
     })
 
 def vacancy_view(request, vacancy):
@@ -42,7 +41,7 @@ class mycompany_view(View):
         form = MyCompanyForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
-            form.update()
+            # form.update()
             return redirect('mycompany')
         return render(request, 'vacancies/company-edit.html', context={'form': form})
 
@@ -54,9 +53,10 @@ class myvacancy_view(View):
         form = MyVacanciesForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
+            # form.update()
             return redirect('myvacancy')
         return render(request, 'vacancies/vacancy_edit.html', context={'form': form})
-
+# work
 class mycompany_create_view(View):
     def get(self, request):
         return render(request, 'vacancies/company-create.html', context={'form': MyCompanyCreateForm})
@@ -65,10 +65,10 @@ class mycompany_create_view(View):
         form = MyCompanyCreateForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
-            form.save()
+            # form.save()
             return redirect('mycompany')
         return render(request, 'vacancies/company-edit.html', context={'form': form})
-
+# work
 class myvacancy_create_view(View):
     def get(self, request):
         return render(request, 'vacancies/vacancy_create.html', context={'form': MyVacanciesCreateForm})
@@ -77,10 +77,10 @@ class myvacancy_create_view(View):
         form = MyVacanciesCreateForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
-            form.save()
+            # form.save()
             return redirect('myvacancy')
         return render(request, 'vacancies/vacancy_create.html', context={'form': form})
-
+# work
 class mycompany_letsstart_view(View):
     def get(self, request):
         return render(request, 'vacancies/company-create.html', context={'form': MyCompanyCreateForm})

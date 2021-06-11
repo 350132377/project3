@@ -22,6 +22,7 @@ def vacancies_view(request):
 def vacancy_view(request, vacancy):
     return render(request, 'vacancies/vacancy.html', context={
         'vacancies': Vacancy.objects.filter(title=vacancy),
+        'companies': Company.objects.all(),
     })
 # work
 def vacancies_by_specialty(request, specialty):

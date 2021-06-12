@@ -33,10 +33,10 @@
                 Иван Топорыжкин
               </button>
               <div class="dropdown-menu dropdown-menu-right mt-3">
-                <a href="#" class="dropdown-item py-2">Профиль</a>
+                <a href="{% url 'login' %}" class="dropdown-item py-2">Профиль</a>
                 <a href="#" class="dropdown-item py-2">Резюме</a>
-                <a href="#" class="dropdown-item py-2">Компания</a>
-                <a href="#" class="dropdown-item py-2">Выйти</a>
+                <a href="{% url 'mycompany' %}" class="dropdown-item py-2">Компания</a>
+                <a href="{% url 'logout' %}" class="dropdown-item py-2">Выйти</a>
               </div>
             </div>
           </li>
@@ -70,7 +70,7 @@
                   <div class="col-12 col-md-6">
                     <div class="form-group pb-2">
                       <label class="mb-2 text-dark" for="vacancyName">Название вакансии</label>
-                      <input class="form-control" type="text" value="Staffing Smarter" id="vacancyyName">
+                      <input class="form-control" type="text" value="Разработчик на Python" id="vacancyyName">
                     </div>
                   </div>
                   <div class="col-12 col-md-6">

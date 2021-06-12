@@ -33,10 +33,10 @@
                 Иван Топорыжкин
               </button>
               <div class="dropdown-menu dropdown-menu-right mt-3">
-                <a href="#" class="dropdown-item py-2">Профиль</a>
+                <a href="{% url 'login' %}" class="dropdown-item py-2">Профиль</a>
                 <a href="#" class="dropdown-item py-2">Резюме</a>
-                <a href="#" class="dropdown-item py-2">Компания</a>
-                <a href="#" class="dropdown-item py-2">Выйти</a>
+                <a href="{% url 'mycompany' %}" class="dropdown-item py-2">Компания</a>
+                <a href="{% url 'logout' %}" class="dropdown-item py-2">Выйти</a>
               </div>
             </div>
           </li>
@@ -44,7 +44,6 @@
       </div>
     </nav>
   </header>
-
   <main class="container mt-3 pb-5">
     <div class="row mt-5">
       <div class="col-12 col-lg-4">
@@ -67,16 +66,15 @@
               </p>
               <form action="/echo" enctype="multipart/form-data">
                 <div class="row">
-
                   <div class="col-12 col-md-6">
                     <div class="form-group pb-2">
                       <label class="mb-2 text-dark" for="companyName">Название компании</label>
-                      <input class="form-control" type="text" value="Staffing Smarter" id="companyName">
+                      <input class="form-control" type="text" value="{{ companies.title }}" id="companyName">
                     </div>
                   </div>
                   <div class="col-12 col-md-6">
                     <div class="form-group">
-                      <label class="mb-2 text-dark" for="{{ company.logo }}">Логотип</label>
+                      <label class="mb-2 text-dark" for="{{ company.logo.url }}">Логотип</label>
                       <div class="row align-items-center">
                         <div class="col-6">
                           <img src="https://place-hold.it/120x40" alt="" style="max-width: 120px;height: auto;">

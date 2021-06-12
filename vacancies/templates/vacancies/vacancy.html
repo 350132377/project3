@@ -41,7 +41,7 @@
             <a href="#"><img src="https://place-hold.it/130x80" width="130" height="80" alt=""></a>
             <div class="d-flex align-items-baseline align-content-baseline">
 
-              {% for vacancy in vacancy.vacancies.all %}
+              {% for vacancy in vacancy.vacancies %}
               <h1 class="h2 mt-4 font-weight-bold" >{{ vacancy.title }}</h1>
               {% endfor %}
 
@@ -69,6 +69,11 @@
               </div>
               <input type="submit" class="btn btn-primary mt-4 mb-2" value="Записаться на пробный урок">
             </div>
+          </form>
+          <form action="" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" class="btn btn-info" value="Отправить отклик" />
           </form>
         </section>
       </div>

@@ -19,7 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LogoutView
 
-from vacancies.views import main_view, vacancies_view, vacancies_by_specialty, company_view, vacancy_view, mycompany_view, mycompany_create_view, mycompany_letsstart_view, myvacancy_view, myvacancy_create_view, vacancy_send, myvacancy_id_view, MyLoginView, MySignupView
+from vacancies.views import main_view, vacancies_view, vacancies_by_specialty, company_view, vacancy_view, mycompany_view, mycompany_create_view, mycompany_letsstart_view, myvacancy_view, myvacancy_create_view, vacancy_send, myvacancy_id_view
+from accounts.views import MyLoginView, MySignupView
 
 
 urlpatterns = [
@@ -29,16 +30,19 @@ urlpatterns = [
     path('vacancies/cat/<str:specialty>/', vacancies_by_specialty, name='vacancies_by_specialty'),
     path('vacancies/<str:vacancy>/', vacancy_view, name='vacancy'),
     path('companies/<str:company>/', company_view, name='company'),
+
     path('mycompany/letsstart/', mycompany_letsstart_view.as_view(), name='letsstart_mycompany'),
     path('mycompany/create/', mycompany_create_view.as_view(), name='create_mycompany'),
     path('mycompany/', mycompany_view.as_view(), name='mycompany'),
+
     path('mycompany/vacancies/', myvacancy_view.as_view(), name='myvacancy'),
     path('mycompany/vacancies/create/', myvacancy_create_view.as_view(), name='myvacancy_create'),
     path('vacancies/<vacancy_id>/send/', vacancy_send.as_view(), name='vacancy_send'),
     path('mycompany/vacancies/<vacancy_id>', myvacancy_id_view.as_view(), name='myvacancy_id'),
-    path('signup/', MySignupView.as_view()),
+
+    path('signup/', MySignupView.as_view(), name='signup'),
     path('login/', MyLoginView.as_view(), name='login'),
-    path('logout/', LogoutView.as_view()),
+    path('logout/', LogoutView.as_view(), name='logout'),
 ]
 
 if settings.DEBUG:

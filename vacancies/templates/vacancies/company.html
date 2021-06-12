@@ -34,7 +34,6 @@
     <div class="navbar mt-5">
       <p><a href="/">Назад</a></p>
     </div>
-<!--    берем одну определенную компанию согласно title=company-->
     {% for company in companies %}
     <section>
       <div class="text-center">
@@ -45,7 +44,6 @@
       <p class="text-center pt-1">{{ company.description }}</p>
       <div class="row mt-5">
         <div class="col-12 col-lg-8 offset-lg-2 m-auto">
-<!--    берем одну определенную вакансию в данной компании по title=company из всех вакансий -->
           {% for vacancy in company.vacancies.all %}
           <div class="card mb-4">
             <div class="card-body px-4">

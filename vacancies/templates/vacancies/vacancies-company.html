@@ -2,7 +2,7 @@
 
 {% block container %}
 
-  <title>Создать карточку компании | Джуманджи</title>
+  <title>Моя компания | Джуманджи</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <style>
@@ -11,7 +11,7 @@
     }
   </style>
 </head>
-{% load crispy_forms_tags %}
+
 <body>
   <header class="container mt-3">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -44,19 +44,50 @@
       </div>
     </nav>
   </header>
-
   <main class="container mt-3 pb-5">
-    <section class="col-12 col-lg-6 offset-lg-3 mt-5 card">
-      <div class="card-body px-3 pb-4">
-        <h1 class="h4 pt-2">Моя компания</h1>
-        <p class="mt-2">Пока мы думаем, что вы – частное лицо. Хотите создать карточку компании, разместить информаию и вакансии?</p>
-        <form action="" method="post">
-          {% csrf_token %}
-          {{ form|crispy }}
-          <input type="submit" class="btn btn-info"  value="Создать карточку компании" />
-        </form>
+    <div class="row mt-5">
+      <div class="col-12 col-lg-4">
+        <aside class="pt-3 pb-4 px-4 mb-5 card">
+          <h1 class="h4 pt-2 pb-2">Моя компания</h1>
+          <div class="nav flex-column nav-pills">
+            <a class="nav-link " href="{% url 'mycompany' %}">1. Информация о&nbsp;компании</a>
+            <a class="nav-link active" href="{% url 'myvacancy' %}">2. Вакансии</a>
+          </div>
+        </aside>
       </div>
-    </section>
+      <div class="col-12 col-lg-8">
+        <div class="card">
+          <div class="card-body px-4 pb-4">
+            <!-- Tab -->
+            <section class="tab-pane fade show active">
+              <h2 class="h4 pt-2 pb-3">Вакансии</h2>
+              {% for company in form %}
+                <section>
+                      {% for vacancy in company.vacancies.all %}
+                      <div class="card mb-4">
+                        <div class="card-body px-4">
+                          <div class="row">
+                            <div class="col-12 col-md-8 col-lg-9">
+                              <h2 class="h2 pb-2">{{ vacancy.title }}</h2>
+                              <p class="mb-2">{{ vacancy.skills }}</p>
+                              <p>От {{ vacancy.salary_min }} до {{ vacancy.salary_max }} руб.</p>
+                              <p class="text-muted pt-1">{{ vacancy.published_at }}</p>
+                            </div>
+                            <div class="col-12 col-md-4 col-lg-3 d-flex align-items-end">
+                              <a href="{% url 'vacancy' company.title %}"><img src="https://place-hold.it/130x80" width="130" height="80" alt=""></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
+                </section>
+              {% endfor %}
+            </section>
+            <!-- END Tab -->
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   {% endblock %}

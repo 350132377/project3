@@ -57,7 +57,7 @@ ROOT_URLCONF = 'baza_vakansiy_it.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates', 'accounts'],
+        'DIRS': ['templates', 'accounts.templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

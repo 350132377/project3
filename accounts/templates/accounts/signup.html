@@ -10,7 +10,7 @@
 <body>
 <a class="navbar-brand mr-4 font-weight-bold" href="/"><h1>Джуманджи</h1></a>
 <p>Создайте аккаунт</p>
-<form method="post" action="signup">
+<form method="post" action="">
   {% csrf_token %}
   <table>{{ form|crispy }}</table>
   <button type="submit">Send</button>

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from vacancies.models import Company, Specialty, Vacancy
 from vacancies.forms import MyCompanyCreateForm, MyCompanyForm, MyVacanciesCreateForm, MyVacanciesForm, VacancySendForm
-
+from django.shortcuts import get_object_or_404
 # work
 def main_view(request):
     return render(request, 'vacancies/index.html', context={
@@ -15,9 +15,10 @@ def vacancies_view(request):
         'specialities': Specialty.objects.all(),
     })
 
-def vacancy_view(request, vacancy):
+def vacancy_view(request, pk):
+    vacancy = get_object_or_404(Vacancy, pk=pk)
     return render(request, 'vacancies/vacancy.html', context={
-        'vacancies': Vacancy.objects.filter(title=vacancy),
+        'vacancy': vacancy,
     })
 # work
 def vacancies_by_specialty(request, specialty):

@@ -10,7 +10,7 @@
 <body>
 <a class="navbar-brand mr-4 font-weight-bold" href="/"><h1>Джуманджи</h1></a>
 <p>Войдите, чтобы управлять</p>
-<form method="post" action="login">
+<form method="post" action="">
     {% csrf_token %}
     <table>{{ form|crispy }}</table>
     <input type="submit" class="btn btn-info"  value="Войти">

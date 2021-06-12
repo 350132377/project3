@@ -21,6 +21,7 @@ from django.contrib.auth.views import LogoutView
 
 from vacancies.views import main_view, vacancies_view, vacancies_by_specialty, company_view, vacancy_view, mycompany_view, mycompany_create_view, mycompany_letsstart_view, myvacancy_view, myvacancy_create_view, vacancy_send, myvacancy_id_view
 from accounts.views import MyLoginView, MySignupView
+from django.urls import include
 
 
 urlpatterns = [
@@ -28,7 +29,7 @@ urlpatterns = [
     path('', main_view, name='main'),
     path('vacancies/', vacancies_view, name='vacancies'),
     path('vacancies/cat/<str:specialty>/', vacancies_by_specialty, name='vacancies_by_specialty'),
-    path('vacancies/<str:vacancy>/', vacancy_view, name='vacancy'),
+    path('vacancies/<pk>/', vacancy_view, name='vacancy'),
     path('companies/<str:company>/', company_view, name='company'),
 
     path('mycompany/letsstart/', mycompany_letsstart_view.as_view(), name='letsstart_mycompany'),

@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 class MySignupView(CreateView):
    form_class = UserCreationForm
    success_url = reverse_lazy('login')
-   template_name = 'accounts/signup.html'
+   template_name = 'accounts/register.html'
 
 class MyLoginView(LoginView):
     redirect_authenticated_user = True

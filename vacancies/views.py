@@ -17,8 +17,10 @@ def vacancies_view(request):
 # work
 def vacancy_view(request, pk):
     vacancy = get_object_or_404(Vacancy, pk=pk)
+    company = get_object_or_404(Company, pk=pk)
     return render(request, 'vacancies/vacancy.html', context={
         'vacancy': vacancy,
+        'company': company,
     })
 # work
 def vacancies_by_specialty(request, specialty):
@@ -49,15 +51,7 @@ class myvacancy_view(View):
             'form': MyVacanciesForm,
         })
 
-    def post(self, request):
-        form = MyVacanciesForm(request.POST)
-        if form.is_valid():
-            print(form.cleaned_data)
-            # form.save()
-            return redirect('mycompany')
-        return render(request, 'vacancies/vacancy-edit.html', context={'form': form})
-
-
+#work
 class mycompany_create_view(View):
     def get(self, request):
         return render(request, 'vacancies/company-create.html', context={'form': MyCompanyCreateForm})
@@ -69,7 +63,7 @@ class mycompany_create_view(View):
             # form.save()
             return redirect('mycompany')
         return render(request, 'vacancies/company-edit.html', context={'form': form})
-
+#!!!!!!!!!!!!!!
 class myvacancy_create_view(View):
     def get(self, request):
         return render(request, 'vacancies/vacancy-edit.html', context={'form': MyVacanciesCreateForm})
@@ -80,7 +74,7 @@ class myvacancy_create_view(View):
             print(form.cleaned_data)
             # form.save()
             return redirect('myvacancy')
-        return render(request, 'vacancies/vacancy-edit.html', context={'form': form})
+        return render(request, 'vacancies/vacancy-list.html', context={'form': form})
 
 class mycompany_letsstart_view(View):
     def get(self, request):
@@ -92,7 +86,7 @@ class mycompany_letsstart_view(View):
             print(form.cleaned_data)
             return redirect('mycompany')
         return render(request, 'vacancies/company-create.html', context={'form': form})
-
+# форма не появляется
 class vacancy_send(View):
     def get(self, request):
         return render(request, 'vacancies/vacancy.html', context={'form': VacancySendForm})

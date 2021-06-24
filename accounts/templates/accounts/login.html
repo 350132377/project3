@@ -11,17 +11,14 @@
   <main class="container">
     <div class="row">
       <div class="col-8 col-lg-4 offset-2 offset-lg-4">
-        <form method="post" class="form-signin pt-5" enctype="multipart/form-data">
-          {% csrf_token %}
-
-          <div class="text-center mt-5 b-1">
-
+        <div class="text-center mt-5 b-1">
             <a href="/"><h1 class="h3 mb-3 font-weight-normal">Джуманджи</h1></a>
             <p class="h5 font-weight-light">Войдите, чтобы управлять</p>
-          </div>
-          <table>{{ form|crispy }}</table>
+        </div>
+        <form action="" method="post">
+          {% csrf_token %}
+          {{ form|crispy }}
           <input type="submit" class="btn btn-info"  value="Войти">
-
         </form>
 
         <div class="mt-4 text-center"><p>Нет аккаунта? <a href="{% url 'register' %}">Зарегистрируйтесь!</a></p></div>

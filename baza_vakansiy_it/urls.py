@@ -31,14 +31,23 @@ urlpatterns = [
     path('vacancies/<pk>/', vacancy_view, name='vacancy'),
     path('companies/<str:company>/', company_view, name='company'),
 
+    #Отправка заявки
+    path('vacancies/<vacancy_id>/send/', vacancy_send, name='vacancy_send'),
+
     path('mycompany/letsstart/', mycompany_letsstart_view.as_view(), name='letsstart_mycompany'),
+    #пустая форма
     path('mycompany/create/', mycompany_create_view.as_view(), name='create_mycompany'),
+    #заполненная форма
     path('mycompany/', mycompany_view.as_view(), name='mycompany'),
 
+
+    #список
     path('mycompany/vacancies/', myvacancy_view.as_view(), name='myvacancy'),
+    #пустая форма
     path('mycompany/vacancies/create/', myvacancy_create_view.as_view(), name='myvacancy_create'),
-    path('vacancies/<vacancy_id>/send/', vacancy_send.as_view(), name='vacancy_send'),
+    #заполненная форма
     path('mycompany/vacancies/<vacancy_id>', myvacancy_id_view.as_view(), name='myvacancy_id'),
+
 
     path('register/', MySignupView.as_view(), name='register'),
     path('login/', MyLoginView.as_view(), name='login'),

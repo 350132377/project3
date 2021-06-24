@@ -46,12 +46,13 @@
             </div>
             <p class="mt-2">{{ vacancy.skills }}</p>
             <p class="text-muted mb-4">{{ vacancy.title }} ({{ company.employee_count }} человек), {{ company.location }} или удаленно</p>
-
+            <div class="form-group">
               <form action="" method="post">
                 {% csrf_token %}
                 {{ form|crispy }}
                 <input type="submit" class="btn btn-info" value="Отправить отклик"/>
               </form>
+            </div>
 
         </section>
       </div>

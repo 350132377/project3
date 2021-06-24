@@ -50,6 +50,15 @@ def my_company(request):
 # work
 def my_company_vacancies(request):
     return render(request, 'vacancies/vacancy-list.html')
+# work
+def my_company_vacancies_create(request):
+    return render(request, 'vacancies/vacancy-edit.html')
+# work доделать чтоб выводилось по pk
+def my_company_vacancy_id(request, vacancy_id):
+    vacancy = get_object_or_404(Vacancy, pk=vacancy_id)
+    return render(request, 'vacancies/vacancy-edit.html', context={
+        'vacancy': vacancy,
+    })
 
 #заполненная форма
 class mycompany_view(View):

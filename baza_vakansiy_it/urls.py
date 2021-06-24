@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LogoutView
 
-from vacancies.views import main_view, vacancies_view, vacancies_by_specialty, company_view, vacancy_view, mycompany_view, mycompany_create_view, mycompany_letsstart_view, myvacancy_view, myvacancy_create_view, vacancy_send, myvacancy_id_view
+from vacancies.views import main_view, vacancies_view, vacancies_by_specialty, company_view, vacancy_view, mycompany_view, mycompany_create_view, mycompany_letsstart_view, myvacancy_view, myvacancy_create_view, vacancy_send, myvacancy_id_view, my_company_letstart, my_company_create, my_company, my_company_vacancies
 from accounts.views import MyLoginView, MySignupView
 
 
@@ -31,18 +31,18 @@ urlpatterns = [
     path('vacancies/<pk>/', vacancy_view, name='vacancy'),
     path('companies/<str:company>/', company_view, name='company'),
 
-    #Отправка заявки
+    # Отправка заявки
     path('vacancies/<vacancy_id>/send/', vacancy_send, name='vacancy_send'),
-
-    path('mycompany/letsstart/', mycompany_letsstart_view.as_view(), name='letsstart_mycompany'),
-    #пустая форма
-    path('mycompany/create/', mycompany_create_view.as_view(), name='create_mycompany'),
-    #заполненная форма
-    path('mycompany/', mycompany_view.as_view(), name='mycompany'),
+    # предложение создать
+    path('mycompany/letsstart/', my_company_letstart, name='letsstart_mycompany'),
+    # пустая форма
+    path('mycompany/create/', my_company_create, name='create_mycompany'),
+    # заполненная форма
+    path('mycompany/', my_company, name='mycompany'),
 
 
     #список
-    path('mycompany/vacancies/', myvacancy_view.as_view(), name='myvacancy'),
+    path('mycompany/vacancies/', my_company_vacancies, name='myvacancy'),
     #пустая форма
     path('mycompany/vacancies/create/', myvacancy_create_view.as_view(), name='myvacancy_create'),
     #заполненная форма

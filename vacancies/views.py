@@ -38,10 +38,18 @@ def vacancy_send(request, vacancy_id):
     return render(request, 'vacancies/sent.html', context={
         'vacancy': vacancy,
     })
-
-
-
-
+# work
+def my_company_letstart(request):
+    return render(request, 'vacancies/company-create.html')
+# work
+def my_company_create(request):
+    return render(request, 'vacancies/company-edit.html')
+# форма должна быть заполнена
+def my_company(request):
+    return render(request, 'vacancies/company-edit.html')
+# work
+def my_company_vacancies(request):
+    return render(request, 'vacancies/vacancy-list.html')
 
 #заполненная форма
 class mycompany_view(View):
@@ -78,6 +86,7 @@ class mycompany_create_view(View):
             # form.save()
             return redirect('mycompany')
         return render(request, 'vacancies/company-edit.html', context={'form': form})
+
 #!!!!!!!!!!!!!! пустая форма
 class myvacancy_create_view(View):
     def get(self, request):

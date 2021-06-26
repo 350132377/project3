@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LogoutView
 
-from vacancies.views import main_view, vacancies_view, vacancies_by_specialty, company_view, vacancy_view, mycompany_view, mycompany_create_view, mycompany_letsstart_view, myvacancy_view, myvacancy_create_view, vacancy_send, myvacancy_id_view, my_company_letstart, my_company_create, my_company, my_company_vacancies, my_company_vacancies_create, my_company_vacancy_id
+from vacancies.views import main_view, vacancies_view, vacancies_by_specialty, company_view, vacancy_view, MyCompanyView, MyCompanyCreateView, MyCompanyLetsstartView, MyVacancyView, MyVacancyCreateView, vacancy_send, MyVacancyIdView, my_company_letstart, my_company_create, my_company, my_company_vacancies, my_company_vacancies_create, my_company_vacancy_id
 from accounts.views import MyLoginView, MySignupView
 
 
@@ -31,6 +31,7 @@ urlpatterns = [
     path('vacancies/<pk>/', vacancy_view, name='vacancy'),
     path('companies/<str:company>/', company_view, name='company'),
 
+    # вьюхи
     # Отправка заявки, отклик отправлен
     path('vacancies/<vacancy_id>/send/', vacancy_send, name='vacancy_send'),
     # предложение создать
@@ -46,8 +47,10 @@ urlpatterns = [
     # заполненная форма
     path('mycompany/vacancies/<vacancy_id>', my_company_vacancy_id, name='myvacancy_id'),
 
-    path('vacancies/<pk>/', myvacancy_id_view.as_view(), name='vacancy_form'),
+    # формы
+    path('vacancies/<pk>/', MyVacancyIdView.as_view(), name='vacancy_form'),
 
+    # авторизация, регистрация
     path('register/', MySignupView.as_view(), name='register'),
     path('login/', MyLoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),

@@ -24,7 +24,7 @@
         </ul>
         <ul class="navbar-nav col-2 justify-content-end">
           <li class="nav-item active">
-            <a href="{% url 'login' %}" class="nav-link font-weight-bold">Вход</a>
+            <a href="{% url 'login' %}" class="nav-link font-weight-bold">{{ user.name }}</a>
           </li>
         </ul>
       </div>
@@ -38,7 +38,7 @@
           <div class="card-body text-center pt-5">
             <img src="../static/check.png" width="65" alt="">
             <h2 class="h5 card-title mt-4 mb-2">Отклик отправлен</h2>
-            <p><a href="#">Вернуться к вакансии</a></p>
+            <p><a href="{% url 'vacancy' vacancy.id %}">Вернуться к вакансии</a></p>
           </div>
         </div>
       </div>

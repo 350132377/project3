@@ -30,7 +30,7 @@
           <li class="nav-item active">
             <div class="btn-group">
               <button type="button" class="btn dropdown-toggle font-weight-bold" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Иван Топорыжкин
+                {{ user.name }}
               </button>
               <div class="dropdown-menu dropdown-menu-right mt-3">
                 <a href="{% url 'login' %}" class="dropdown-item py-2">Профиль</a>
@@ -45,16 +45,12 @@
     </nav>
   </header>
 
-  <main class="container mt-3 pb-5">
+    <main class="container mt-3 pb-5">
     <section class="col-12 col-lg-6 offset-lg-3 mt-5 card">
       <div class="card-body px-3 pb-4">
         <h1 class="h4 pt-2">Моя компания</h1>
         <p class="mt-2">Пока мы думаем, что вы – частное лицо. Хотите создать карточку компании, разместить информаию и вакансии?</p>
-        <form action="" method="post">
-          {% csrf_token %}
-          {{ form|crispy }}
-          <input type="submit" class="btn btn-info"  value="Создать карточку компании" />
-        </form>
+        <a href="{% url 'company_create_form' %}" class="btn btn-info mb-2">Создать карточку компании</a>
       </div>
     </section>
   </main>

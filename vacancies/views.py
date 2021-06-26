@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from vacancies.models import Company, Specialty, Vacancy, User
-from vacancies.forms import MyCompanyCreateForm, MyCompanyForm, MyVacanciesCreateForm, MyVacanciesForm, VacancySendForm
+from vacancies.forms import MyCompanyCreateForm, MyCompanyForm, MyVacanciesForm, VacancySendForm
 from django.shortcuts import get_object_or_404
 
 # work
@@ -49,7 +49,9 @@ def my_company_create(request):
     return render(request, 'vacancies/company-create.html')
 # форма заполненная форма
 def my_company(request):
-    return render(request, 'vacancies/company-edit.html')
+    return render(request, 'vacancies/company-edit.html', context={
+        'company': Company,
+    })
 # work список
 def my_company_vacancies(request):
     return render(request, 'vacancies/vacancy-list.html')
@@ -77,7 +79,7 @@ class MyVacancyIdView(View):
         return render(request, 'vacancies/vacancy.html', context={'form': form})
 
 
-#заполненная форма
+#заполненная форма не работает компания пользователя
 class MyCompanyView(View):
     def get(self, request):
         form = MyCompanyForm()
@@ -90,17 +92,10 @@ class MyCompanyView(View):
             # form.update()
             return redirect('mycompany')
         else:
-            form = MyCompanyForm(request.GET)
-        return render(request, 'vacancies/company-edit.html', context={'form': form})
+            form = MyCompanyForm()
+        return render(request, 'vacancies/company-create.html', context={'form': form})
 
-# список
-class MyVacancyView(View):
-    def get(self, request):
-        return render(request, 'vacancies/vacancy-list.html', context={
-            'form': MyVacanciesForm,
-        })
-
-#work пустая форма
+# пустая форма компания пользователя
 class MyCompanyCreateView(View):
     def get(self, request):
         return render(request, 'vacancies/company-create.html', context={'form': MyCompanyCreateForm})
@@ -113,29 +108,9 @@ class MyCompanyCreateView(View):
             return redirect('mycompany')
         return render(request, 'vacancies/company-edit.html', context={'form': form})
 
-#!!!!!!!!!!!!!! пустая форма
-class MyVacancyCreateView(View):
+# список вакансии пользователя
+class MyVacancyView(View):
     def get(self, request):
-        return render(request, 'vacancies/vacancy-edit.html', context={'form': MyVacanciesCreateForm})
-
-    def post(self, request):
-        form = MyVacanciesCreateForm(request.POST)
-        if form.is_valid():
-            print(form.cleaned_data)
-            # form.save()
-            return redirect('myvacancy')
-        return render(request, 'vacancies/vacancy-list.html', context={'form': form})
-
-class MyCompanyLetsstartView(View):
-    def get(self, request):
-        return render(request, 'vacancies/company-create.html', context={'form': MyCompanyCreateForm})
-
-    def post(self, request):
-        form = MyCompanyCreateForm(request.POST)
-        if form.is_valid():
-            print(form.cleaned_data)
-            return redirect('mycompany')
-        return render(request, 'vacancies/company-edit.html', context={'form': form})
-
-
-
+        return render(request, 'vacancies/vacancy-edit.html', context={
+            'form': MyVacanciesForm,
+        })

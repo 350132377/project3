@@ -12,11 +12,6 @@ class MyCompanyForm(forms.ModelForm):
         model = Company
         fields = ('title', 'location', 'description', 'employee_count', 'owner')
 
-class MyVacanciesCreateForm(forms.ModelForm):
-    class Meta:
-        model = Vacancy
-        fields = ('title', 'specialty', 'skills', 'description', 'salary_min', 'salary_max')
-
 class MyVacanciesForm(forms.ModelForm):
     class Meta:
         model = Vacancy

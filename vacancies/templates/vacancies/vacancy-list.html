@@ -73,10 +73,13 @@
                       </p>
                     </div>
                     <div class="col-6 col-lg-4 text-right">
-                      <a href="#" class="btn btn-outline-info">Изменить</a>
+                      <a href="{% url 'vacancy_create_form' %}" class="btn btn-outline-info">Изменить</a>
                     </div>
                   </div>
                 </div>
+              </div>
+              <div class="card-body px-3 pb-4">
+                <a href="{% url 'vacancy_create_form' %}" class="btn btn-info mb-2">Добавить вакансию</a>
               </div>
               <!-- END vacancy state 1 -->
 

@@ -31,7 +31,7 @@ urlpatterns = [
     path('vacancies/<pk>/', vacancy_view, name='vacancy'),
     path('companies/<str:company>/', company_view, name='company'),
 
-    # Отправка заявки
+    # Отправка заявки, отклик отправлен
     path('vacancies/<vacancy_id>/send/', vacancy_send, name='vacancy_send'),
     # предложение создать
     path('mycompany/letsstart/', my_company_letstart, name='letsstart_mycompany'),
@@ -39,14 +39,14 @@ urlpatterns = [
     path('mycompany/create/', my_company_create, name='create_mycompany'),
     # заполненная форма
     path('mycompany/', my_company, name='mycompany'),
+    # список
+    path('mycompany/vacancies/', my_company_vacancies, name='myvacancy'),
     # пустая форма
     path('mycompany/vacancies/create/', my_company_vacancies_create, name='myvacancy_create'),
     # заполненная форма
     path('mycompany/vacancies/<vacancy_id>', my_company_vacancy_id, name='myvacancy_id'),
 
-    #список
-    path('mycompany/vacancies/', my_company_vacancies, name='myvacancy'),
-
+    path('vacancies/<pk>/', myvacancy_id_view.as_view(), name='vacancy_form'),
 
     path('register/', MySignupView.as_view(), name='register'),
     path('login/', MyLoginView.as_view(), name='login'),

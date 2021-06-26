@@ -32,33 +32,49 @@ def company_view(request, company):
     return render(request, 'vacancies/company.html', context={
         'companies': Company.objects.filter(title=company),
     })
-# work
+
+# 4 неделя
+# work отправка заявки
 def vacancy_send(request, vacancy_id):
     vacancy = get_object_or_404(Vacancy, pk=vacancy_id)
     return render(request, 'vacancies/sent.html', context={
         'vacancy': vacancy,
     })
-# work
+# work предложение создать
 def my_company_letstart(request):
     return render(request, 'vacancies/company-create.html')
-# work
+# work пустая форма
 def my_company_create(request):
-    return render(request, 'vacancies/company-edit.html')
-# форма должна быть заполнена
+    return render(request, 'vacancies/company-create.html')
+# форма заполненная форма
 def my_company(request):
     return render(request, 'vacancies/company-edit.html')
-# work
+# work список
 def my_company_vacancies(request):
     return render(request, 'vacancies/vacancy-list.html')
-# work
+# work пустая форма
 def my_company_vacancies_create(request):
     return render(request, 'vacancies/vacancy-edit.html')
-# work доделать чтоб выводилось по pk
+# work заполненная форма
 def my_company_vacancy_id(request, vacancy_id):
     vacancy = get_object_or_404(Vacancy, pk=vacancy_id)
     return render(request, 'vacancies/vacancy-edit.html', context={
         'vacancy': vacancy,
     })
+
+# Создайте форму отправки отклика на вакансию на основе модели Application
+# не появляется форма
+class myvacancy_id_view(View):
+    def get(self, request):
+        return render(request, 'vacancies/vacancy.html', context={'form': VacancySendForm})
+
+    def post(self, request):
+        form = VacancySendForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            return redirect('myvacancy')
+        return render(request, 'vacancies/sent.html', context={'form': form})
+
 
 #заполненная форма
 class mycompany_view(View):
@@ -122,17 +138,3 @@ class mycompany_letsstart_view(View):
 
 
 
-#заполненная форма
-class myvacancy_id_view(View):
-    def get(self, request):
-        return render(request, 'vacancies/vacancy-edit.html', context={'form': VacancySendForm})
-
-    def post(self, request):
-        form = VacancySendForm(request.POST)
-        if form.is_valid():
-            print(form.cleaned_data)
-            # form.update()
-            return redirect('myvacancy')
-        else:
-            form = VacancySendForm()
-        return render(request, 'vacancies/vacancy-edit.html', context={'form': form})

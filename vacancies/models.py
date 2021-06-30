@@ -1,12 +1,8 @@
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.contrib.auth.models import User
 
 from baza_vakansiy_it.settings import MEDIA_COMPANY_IMAGE_DIR, MEDIA_SPECIALITY_IMAGE_DIR
-
-
-class User(models.Model):
-    name = models.CharField(max_length=20)
-    password = models.CharField(max_length=50, null=True)
 
 
 class Company(models.Model):

@@ -17,8 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-
-from vacancies.views import main_view, vacancies_view, vacancies_by_specialty, company_view, vacancy_view, MyCompanyView, MyCompanyCreateView, MyVacancyView, vacancy_send, MyVacancyIdView, my_company_letstart, my_company_create, my_company, my_company_vacancies, my_company_vacancies_create, my_company_vacancy_id
+from vacancies.views.main import main_view, company_view, vacancies_view, vacancies_by_specialty, vacancy_view
+from vacancies.views.company import my_company_letstart, my_company_create, my_company, MyCompanyView, MyCompanyCreateView
+from vacancies.views.vacancies import vacancy_send, my_company_vacancies, my_company_vacancies_create, my_company_vacancy_id, MyVacancyIdView, MyVacancyView
 from django.urls import include
 
 

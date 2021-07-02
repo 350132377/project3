@@ -31,7 +31,7 @@
           <li class="nav-item active">
             <div class="btn-group">
               <button type="button" class="btn dropdown-toggle font-weight-bold" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ user.id }}
+                {{ user.username }}
               </button>
               <div class="dropdown-menu dropdown-menu-right mt-3">
                 <a href="{% url 'login' %}" class="dropdown-item py-2">Профиль</a>
@@ -68,7 +68,7 @@
                   <div class="col-12 col-md-6">
                     <div class="form-group pb-2">
                       <label class="mb-2 text-dark" for="companyName">Название компании</label>
-                      <input class="form-control" type="text" value="{{ company.title }}" id="companyName">
+                      <input class="form-control" type="text" value="{{ form.company.title }}" id="companyName">
                     </div>
                   </div>
                   <div class="col-12 col-md-6">

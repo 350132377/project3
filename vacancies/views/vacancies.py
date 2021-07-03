@@ -4,8 +4,6 @@ from django.shortcuts import get_object_or_404
 from django.views import View
 from vacancies.forms import ApplicationSendForm, MyVacanciesForm
 
-
-
 def vacancy_send(request, vacancy_id):
     vacancy = get_object_or_404(Vacancy, pk=vacancy_id)
     return render(request, 'vacancies/sent.html', context={
@@ -30,24 +28,24 @@ def vacancies_view(request):
         'specialities': Specialty.objects.all(),
     })
 
-# Создайте форму отправки отклика на вакансию на основе модели Application
 class ApplicationSendView(View):
     def get(self, request, pk):
         vacancy = get_object_or_404(Vacancy, pk=pk)
-        company = get_object_or_404(Company, pk=pk)
         return render(request, 'vacancies/vacancy.html', context={
             'form': ApplicationSendForm,
             'vacancy': vacancy,
-            'company': company,
         })
-
-    def post(self, request):
+# не работает отправка отклика
+    def post(self, request, pk):
+        vacancy = get_object_or_404(Vacancy, pk=pk)
         form = ApplicationSendForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
-            return redirect('vacancy_send')
-        return render(request, 'vacancies/vacancy.html', context={'form': form})
-
+            return redirect('vacancy_send', kwargs={'vacancy_id': pk})
+        return render(request, 'vacancies/vacancy.html', context={
+            'form': form,
+            'vacancy': vacancy,
+        })
 
 # список вакансии пользователя
 class MyVacancyView(View):

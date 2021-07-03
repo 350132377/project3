@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from vacancies.views.main import main_view, company_view, vacancies_by_specialty
 from vacancies.views.company import MyCompanyView, MyCompanyCreateView
-from vacancies.views.vacancies import vacancy_view, vacancies_view, vacancy_send, my_company_vacancies, my_company_vacancies_create, my_company_vacancy_id, ApplicationSendView, MyVacancyView
+from vacancies.views.vacancies import vacancies_view, vacancy_send, my_company_vacancies, my_company_vacancies_create, my_company_vacancy_id, ApplicationSendView, MyVacancyView
 from django.urls import include
 
 
@@ -29,7 +29,7 @@ urlpatterns = [
     path('vacancies/', vacancies_view, name='vacancies'),
     path('vacancies/cat/<str:specialty>/', vacancies_by_specialty, name='vacancies_by_specialty'),
     path('companies/<str:company>/', company_view, name='company'),
-    path('vacancies/<pk>/', ApplicationSendView.as_view(), name='vacancy'),
+    path('vacancies/<pk>/', ApplicationSendView.as_view(), name='application_vacancy'),
 
     # вакансии
     # Отправка заявки, отклик отправлен

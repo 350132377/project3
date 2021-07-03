@@ -44,7 +44,7 @@
               <p class="m-0 pl-3">{{ vacancy.salary_min }} – {{ vacancy.salary_max }} Р</p>
             </div>
             <p class="mt-2">{{ vacancy.skills }}</p>
-            <p class="text-muted mb-4">{{ vacancy.title }} ({{ company.employee_count }} человек), {{ company.location }} или удаленно</p>
+            <p class="text-muted mb-4">{{ vacancy.title }} ({{ vacancy.company.employee_count }} человек), {{ vacancy.company.location }} или удаленно</p>
             <div class="form-group">
               <form action="" method="post">
                 {% csrf_token %}

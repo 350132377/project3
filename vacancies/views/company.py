@@ -7,8 +7,7 @@ from vacancies.models import Company
 
 class MyCompanyView(View):
     def get(self, request):
-        form = MyCompanyForm()
-        return render(request, 'vacancies/company-edit.html', context={'form': form})
+        return render(request, 'vacancies/company-create.html', context={'form': MyCompanyCreateForm})
 
     def post(self, request):
         form = MyCompanyForm(request.POST)

@@ -39,7 +39,7 @@ urlpatterns = [
     # пустая форма вакансия
     path('mycompany/vacancies/create/', my_company_vacancies_create, name='myvacancy_create'),
     # заполненная форма вакансия
-    path('mycompany/vacancies/<vacancy_id>', my_company_vacancy_id, name='myvacancy_id'),
+    path('mycompany/vacancies/<vacancy_id>/', my_company_vacancy_id, name='myvacancy_id'),
 
     # формы
     path('vacancies/<pk>/', MyVacancyIdView.as_view(), name='vacancy_form'),

@@ -1,6 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.contrib.auth.models import User
+
+from django.contrib.auth import get_user_model
 
 from baza_vakansiy_it.settings import MEDIA_COMPANY_IMAGE_DIR, MEDIA_SPECIALITY_IMAGE_DIR
 
@@ -11,7 +12,7 @@ class Company(models.Model):
     logo = models.ImageField(upload_to=MEDIA_COMPANY_IMAGE_DIR)
     description = models.TextField()
     employee_count = models.IntegerField()
-    owner = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    owner = models.OneToOneField(get_user_model(), on_delete=models.CASCADE, null=True)
 
 
 class Specialty(models.Model):
@@ -39,4 +40,4 @@ class Application(models.Model):
     written_username = models.CharField(max_length=20)
     written_phone = models.IntegerField()
     vacancy = models.ForeignKey(Vacancy, on_delete=models.CASCADE, related_name="applications")
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="applications")
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name="applications")

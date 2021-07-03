@@ -29,8 +29,7 @@ urlpatterns = [
     path('vacancies/', vacancies_view, name='vacancies'),
     path('vacancies/cat/<str:specialty>/', vacancies_by_specialty, name='vacancies_by_specialty'),
     path('companies/<str:company>/', company_view, name='company'),
-    path('vacancies/<pk>/', vacancy_view, name='vacancy'),
-    path('vacancies/<pk>/', ApplicationSendView.as_view(), name='vacancy_form'),
+    path('vacancies/<pk>/', ApplicationSendView.as_view(), name='vacancy'),
 
     # вакансии
     # Отправка заявки, отклик отправлен

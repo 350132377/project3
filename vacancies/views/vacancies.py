@@ -30,19 +30,16 @@ def vacancies_view(request):
         'specialities': Specialty.objects.all(),
     })
 
-def vacancy_view(request, pk):
-    vacancy = get_object_or_404(Vacancy, pk=pk)
-    company = get_object_or_404(Company, pk=pk)
-    return render(request, 'vacancies/vacancy.html', context={
-        'vacancy': vacancy,
-        'company': company,
-    })
-
 # Создайте форму отправки отклика на вакансию на основе модели Application
-# не появляется форма
 class ApplicationSendView(View):
-    def get(self, request):
-        return render(request, 'vacancies/vacancy.html', context={'form': ApplicationSendForm})
+    def get(self, request, pk):
+        vacancy = get_object_or_404(Vacancy, pk=pk)
+        company = get_object_or_404(Company, pk=pk)
+        return render(request, 'vacancies/vacancy.html', context={
+            'form': ApplicationSendForm,
+            'vacancy': vacancy,
+            'company': company,
+        })
 
     def post(self, request):
         form = ApplicationSendForm(request.POST)

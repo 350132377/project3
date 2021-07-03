@@ -17,9 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from vacancies.views.main import main_view, company_view, vacancies_view, vacancies_by_specialty, vacancy_view
+from vacancies.views.main import main_view, company_view, vacancies_by_specialty
 from vacancies.views.company import MyCompanyView, MyCompanyCreateView
-from vacancies.views.vacancies import vacancy_send, my_company_vacancies, my_company_vacancies_create, my_company_vacancy_id, MyVacancyIdView, MyVacancyView
+from vacancies.views.vacancies import vacancy_view, vacancies_view, vacancy_send, my_company_vacancies, my_company_vacancies_create, my_company_vacancy_id, MyVacancyIdView, MyVacancyView
 from django.urls import include
 
 
@@ -28,10 +28,12 @@ urlpatterns = [
     path('', main_view, name='main'),
     path('vacancies/', vacancies_view, name='vacancies'),
     path('vacancies/cat/<str:specialty>/', vacancies_by_specialty, name='vacancies_by_specialty'),
-    path('vacancies/<pk>/', vacancy_view, name='vacancy'),
     path('companies/<str:company>/', company_view, name='company'),
+    path('vacancies/<pk>/', vacancy_view, name='vacancy'),
+    path('vacancies/<pk>/', MyVacancyIdView.as_view(), name='vacancy_form'),
 
-    # вьюхи
+
+    # вакансии
     # Отправка заявки, отклик отправлен
     path('vacancies/<vacancy_id>/send/', vacancy_send, name='vacancy_send'),
     # список вакансий
@@ -40,15 +42,15 @@ urlpatterns = [
     path('mycompany/vacancies/create/', my_company_vacancies_create, name='myvacancy_create'),
     # заполненная форма вакансия
     path('mycompany/vacancies/<vacancy_id>/', my_company_vacancy_id, name='myvacancy_id'),
+    path('mycompany/vacancies/create/', MyVacancyView.as_view(), name='vacancy_create_form'),
 
-    # формы
-    path('vacancies/<pk>/', MyVacancyIdView.as_view(), name='vacancy_form'),
-    # Доработайте страничку информации о компании
+    # компании
     path('mycompany/', MyCompanyView.as_view(), name='mycompany'),
     path('mycompany/create/', MyCompanyCreateView.as_view(), name='company_create_form'),
-    # Доработайте страничку с вакансиями
-    path('mycompany/vacancies/create/', MyVacancyView.as_view(), name='vacancy_create_form'),
     path('mycompany/letsstart/', MyCompanyCreateView.as_view(), name='letsstart_mycompany'),
+
+
+
 
     # авторизация, регистрация
     path('accounts/', include('accounts.urls'))

@@ -7,7 +7,12 @@ from vacancies.models import Company
 
 class MyCompanyView(View):
     def get(self, request):
-        return render(request, 'vacancies/company-create.html', context={'form': MyCompanyCreateForm})
+        company = Company.objects.filter(owner_id=request.user.id).first()
+        form = MyCompanyForm()
+        if company:
+            return render(request, 'vacancies/company-edit.html', context={'form': form})
+        else:
+            return redirect('letsstart_mycompany')
 
     def post(self, request):
         form = MyCompanyForm(request.POST)

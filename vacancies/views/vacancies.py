@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from vacancies.models import Vacancy
+from vacancies.models import Specialty, Vacancy, Company
 from django.shortcuts import get_object_or_404
 from django.views import View
 from vacancies.forms import VacancySendForm, MyVacanciesForm
+
 
 
 def vacancy_send(request, vacancy_id):
@@ -11,7 +12,7 @@ def vacancy_send(request, vacancy_id):
         'vacancy': vacancy,
     })
 
-# work список
+# список
 def my_company_vacancies(request):
     return render(request, 'vacancies/vacancy-list.html')
 # work пустая форма
@@ -22,6 +23,19 @@ def my_company_vacancy_id(request, vacancy_id):
     vacancy = get_object_or_404(Vacancy, pk=vacancy_id)
     return render(request, 'vacancies/vacancy-edit.html', context={
         'vacancy': vacancy,
+    })
+
+def vacancies_view(request):
+    return render(request, 'vacancies/vacancies.html', context={
+        'specialities': Specialty.objects.all(),
+    })
+
+def vacancy_view(request, pk):
+    vacancy = get_object_or_404(Vacancy, pk=pk)
+    company = get_object_or_404(Company, pk=pk)
+    return render(request, 'vacancies/vacancy.html', context={
+        'vacancy': vacancy,
+        'company': company,
     })
 
 # Создайте форму отправки отклика на вакансию на основе модели Application

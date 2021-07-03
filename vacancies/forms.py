@@ -40,7 +40,7 @@ class MyVacanciesForm(forms.ModelForm):
             'published_at': 'Опубликовано',
         }
 
-class VacancySendForm(forms.ModelForm):
+class ApplicationSendForm(forms.ModelForm):
     class Meta:
         model = Application
         fields = ('written_username', 'written_phone')

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from vacancies.models import Specialty, Vacancy, Company
 from django.shortcuts import get_object_or_404
 from django.views import View
-from vacancies.forms import VacancySendForm, MyVacanciesForm
+from vacancies.forms import ApplicationSendForm, MyVacanciesForm
 
 
 
@@ -40,12 +40,12 @@ def vacancy_view(request, pk):
 
 # Создайте форму отправки отклика на вакансию на основе модели Application
 # не появляется форма
-class MyVacancyIdView(View):
+class ApplicationSendView(View):
     def get(self, request):
-        return render(request, 'vacancies/vacancy.html', context={'form': VacancySendForm})
+        return render(request, 'vacancies/vacancy.html', context={'form': ApplicationSendForm})
 
     def post(self, request):
-        form = VacancySendForm(request.POST)
+        form = ApplicationSendForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
             return redirect('vacancy_send')

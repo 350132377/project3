@@ -14,16 +14,6 @@ class MyCompanyView(View):
         else:
             return redirect('letsstart_mycompany')
 
-    def post(self, request):
-        form = MyCompanyForm(request.POST)
-        if form.is_valid():
-            print(form.cleaned_data)
-            # form.update()
-            return redirect('mycompany')
-        else:
-            form = MyCompanyForm()
-        return render(request, 'vacancies/company-create.html', context={'form': form})
-
 class MyCompanyCreateView(View):
     def get(self, request):
         company = Company.objects.filter(owner_id=request.user.id).first()

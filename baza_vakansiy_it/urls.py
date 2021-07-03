@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from vacancies.views.main import main_view, company_view, vacancies_by_specialty
 from vacancies.views.company import MyCompanyView, MyCompanyCreateView
-from vacancies.views.vacancies import vacancy_view, vacancies_view, vacancy_send, my_company_vacancies, my_company_vacancies_create, my_company_vacancy_id, MyVacancyIdView, MyVacancyView
+from vacancies.views.vacancies import vacancy_view, vacancies_view, vacancy_send, my_company_vacancies, my_company_vacancies_create, my_company_vacancy_id, ApplicationSendView, MyVacancyView
 from django.urls import include
 
 
@@ -30,8 +30,7 @@ urlpatterns = [
     path('vacancies/cat/<str:specialty>/', vacancies_by_specialty, name='vacancies_by_specialty'),
     path('companies/<str:company>/', company_view, name='company'),
     path('vacancies/<pk>/', vacancy_view, name='vacancy'),
-    path('vacancies/<pk>/', MyVacancyIdView.as_view(), name='vacancy_form'),
-
+    path('vacancies/<pk>/', ApplicationSendView.as_view(), name='vacancy_form'),
 
     # вакансии
     # Отправка заявки, отклик отправлен
@@ -48,9 +47,6 @@ urlpatterns = [
     path('mycompany/', MyCompanyView.as_view(), name='mycompany'),
     path('mycompany/create/', MyCompanyCreateView.as_view(), name='company_create_form'),
     path('mycompany/letsstart/', MyCompanyCreateView.as_view(), name='letsstart_mycompany'),
-
-
-
 
     # авторизация, регистрация
     path('accounts/', include('accounts.urls'))

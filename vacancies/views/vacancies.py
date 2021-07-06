@@ -6,16 +6,7 @@ from vacancies.forms import ApplicationSendForm, MyVacanciesForm
 
 
 
-# work пустая форма
-def my_company_vacancies_create(request):
-    return render(request, 'vacancies/vacancy-edit.html')
-# work заполненная форма
-def my_company_vacancy_id(request, vacancy_id):
-    vacancy = get_object_or_404(Vacancy, pk=vacancy_id)
-    return render(request, 'vacancies/vacancy-edit.html', context={
-        'vacancy': vacancy,
-    })
-
+# work
 def vacancies_view(request):
     return render(request, 'vacancies/vacancies.html', context={
         'specialities': Specialty.objects.all(),
@@ -48,18 +39,55 @@ class ApplicationSendView(View):
         })
 
 # список вакансии пользователя
-# work
 class MyVacanciesListView(View):
-    def get(self, request):
+    def get(self, request, vacancy_id):
+        vacancy_id = get_object_or_404(Vacancy, pk=vacancy_id)
         try:
             company = Company.objects.get(owner_id=request.user.id)
         except Company.DoesNotExist:
             return redirect('letsstart_mycompany')
         vacancies = Vacancy.objects.filter(company_id=company.id)
-        return render(request, 'vacancies/vacancy-list.html', context={'vacancies': vacancies})
+        return render(request, 'vacancies/vacancy-list.html', context={
+            'vacancies': vacancies,
+            'vacancy_id': vacancy_id,
+        })
 
+# просмотр вакансии
 class MyVacancyView(View):
-    def get(self, request):
+    def get(self, request, vacancy_id):
+        vacancy = get_object_or_404(Vacancy, pk=vacancy_id)
         return render(request, 'vacancies/vacancy-edit.html', context={
             'form': MyVacanciesForm,
+            'vacancy': vacancy,
+        })
+
+    def post(self, request, pk):
+        vacancy = get_object_or_404(Vacancy, pk=pk)
+        form = MyVacanciesForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            # form.save()
+            return redirect('myvacancy_id', vacancy_id=pk)
+        return render(request, 'vacancies/vacancy-edit.html', context={
+            'form': form,
+            'vacancy': vacancy,
+        })
+
+# редактирование вакансии
+class MyVacancyCreateView(View):
+    def get(self, request):
+        return render(request, 'vacancies/vacancy-create.html', context={
+            'form': MyVacanciesForm,
+        })
+
+    def post(self, request, pk):
+        vacancy = get_object_or_404(Vacancy, pk=pk)
+        form = MyVacanciesForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            # form.save()
+            return redirect('myvacancy_id', vacancy_id=pk)
+        return render(request, 'vacancies/vacancy-create.html', context={
+            'form': form,
+            'vacancy': vacancy,
         })

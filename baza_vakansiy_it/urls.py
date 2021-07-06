@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from vacancies.views.main import main_view, company_view, vacancies_by_specialty
 from vacancies.views.company import MyCompanyView, MyCompanyCreateView
-from vacancies.views.vacancies import vacancies_view, vacancy_send, MyVacanciesListView, my_company_vacancies_create, my_company_vacancy_id, ApplicationSendView, MyVacancyView
+from vacancies.views.vacancies import vacancies_view, vacancy_send, MyVacanciesListView, MyVacancyView, ApplicationSendView, MyVacancyCreateView
 from django.urls import include
 
 
@@ -32,15 +32,10 @@ urlpatterns = [
     path('vacancies/<pk>/', ApplicationSendView.as_view(), name='application_vacancy'),
 
     # вакансии
-    # work
-    path('vacancies/<vacancy_id>/send/', vacancy_send, name='vacancy_send'),
-    # список вакансий
+    path('vacancies/<vacancy_id>/send/', vacancy_send, name='vacancy_send'), # work
     path('mycompany/vacancies/', MyVacanciesListView.as_view(), name='myvacancy'),
-    # пустая форма вакансия
-    path('mycompany/vacancies/create/', my_company_vacancies_create, name='myvacancy_create'),
-    # заполненная форма вакансия
-    path('mycompany/vacancies/<vacancy_id>/', my_company_vacancy_id, name='myvacancy_id'),
-    path('mycompany/vacancies/create/', MyVacancyView.as_view(), name='vacancy_create_form'),
+    path('mycompany/vacancies/<vacancy_id>/', MyVacancyView.as_view(), name='myvacancy_id'), # work
+    path('mycompany/vacancies/create/', MyVacancyCreateView.as_view(), name='vacancy_create_form'),
 
     # компании
     path('mycompany/', MyCompanyView.as_view(), name='mycompany'),

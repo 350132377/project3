@@ -40,8 +40,7 @@ class ApplicationSendView(View):
 
 # список вакансии пользователя
 class MyVacanciesListView(View):
-    def get(self, request, vacancy_id):
-        vacancy_id = get_object_or_404(Vacancy, pk=vacancy_id)
+    def get(self, request):
         try:
             company = Company.objects.get(owner_id=request.user.id)
         except Company.DoesNotExist:
@@ -49,7 +48,6 @@ class MyVacanciesListView(View):
         vacancies = Vacancy.objects.filter(company_id=company.id)
         return render(request, 'vacancies/vacancy-list.html', context={
             'vacancies': vacancies,
-            'vacancy_id': vacancy_id,
         })
 
 # просмотр вакансии

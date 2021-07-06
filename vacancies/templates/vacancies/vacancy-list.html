@@ -74,10 +74,10 @@
                         <span class="mr-4">{{ vacancy.salary_max }}</span><a href="#" class="text-info">{{ vacancy.application.count }} отклика</a>
                       </p>
                     </div>
-                    {% endfor %}
                     <div class="col-6 col-lg-4 text-right">
-                      <a href="{% url 'myvacancy_id' vacancy_id.id %}" class="btn btn-outline-info">Изменить</a>
+                      <a href="{% url 'myvacancy_id' vacancy.id %}" class="btn btn-outline-info">Изменить</a>
                     </div>
+                    {% endfor %}
                   </div>
                 </div>
               </div>

@@ -74,7 +74,8 @@ class MyVacancyView(View):
             'vacancy': vacancy,
         })
 
-# редактирование вакансии
+# создание вакансии
+# work
 class MyVacancyCreateView(View):
     def get(self, request):
         return render(request, 'vacancies/vacancy-create.html', context={

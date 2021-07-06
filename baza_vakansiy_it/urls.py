@@ -33,7 +33,7 @@ urlpatterns = [
 
     # вакансии
     path('vacancies/<vacancy_id>/send/', vacancy_send, name='vacancy_send'), # work
-    path('mycompany/vacancies/', MyVacanciesListView.as_view(), name='myvacancy'),
+    path('mycompany/vacancies/', MyVacanciesListView.as_view(), name='myvacancy'), # work
     path('mycompany/vacancies/<vacancy_id>/', MyVacancyView.as_view(), name='myvacancy_id'), # work
     path('mycompany/vacancies/create/', MyVacancyCreateView.as_view(), name='vacancy_create_form'),
 

@@ -64,14 +64,11 @@
             <section>
               <h2 class="h4 pt-2 pb-3">{{ vacancy.title }}</h2>
               <p class="alert alert-info" role="alert">Вакансия обновлена</p>
-              <form action="" method="post">
-                <input type="submit" class="btn btn-info" value="Сохранить" />
-              </form>
               <div class="form-group">
                   <form action="" method="post">
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <input type="submit" class="btn btn-info" value="Отправить отклик" />
+                    <input type="submit" class="btn btn-info" value="Сохранить" />
                   </form>
               </div>
             </section>

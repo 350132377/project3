@@ -32,6 +32,7 @@ class ApplicationSendView(View):
         form = ApplicationSendForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
+            # form.save()
             return redirect('vacancy_send', vacancy_id=pk)
         return render(request, 'vacancies/vacancy.html', context={
             'form': form,
@@ -39,6 +40,7 @@ class ApplicationSendView(View):
         })
 
 # список вакансии пользователя
+# work
 class MyVacanciesListView(View):
     def get(self, request):
         try:
@@ -51,6 +53,7 @@ class MyVacanciesListView(View):
         })
 
 # просмотр вакансии
+# work
 class MyVacancyView(View):
     def get(self, request, vacancy_id):
         vacancy = get_object_or_404(Vacancy, pk=vacancy_id)
@@ -59,13 +62,13 @@ class MyVacancyView(View):
             'vacancy': vacancy,
         })
 
-    def post(self, request, pk):
-        vacancy = get_object_or_404(Vacancy, pk=pk)
+    def post(self, request, vacancy_id):
+        vacancy = get_object_or_404(Vacancy, pk=vacancy_id)
         form = MyVacanciesForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
             # form.save()
-            return redirect('myvacancy_id', vacancy_id=pk)
+            return redirect('myvacancy_id', vacancy_id=vacancy_id)
         return render(request, 'vacancies/vacancy-edit.html', context={
             'form': form,
             'vacancy': vacancy,

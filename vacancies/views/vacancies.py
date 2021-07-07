@@ -82,14 +82,13 @@ class MyVacancyCreateView(View):
             'form': MyVacanciesForm,
         })
 
-    def post(self, request, pk):
-        vacancy = get_object_or_404(Vacancy, pk=pk)
+    def post(self, request, pk, code):
         form = MyVacanciesForm(request.POST)
+        form.specialty_id = Specialty.objects.filter(code=code)
         if form.is_valid():
             print(form.cleaned_data)
             # form.save()
             return redirect('myvacancy_id', vacancy_id=pk)
         return render(request, 'vacancies/vacancy-create.html', context={
             'form': form,
-            'vacancy': vacancy,
         })

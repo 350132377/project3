@@ -28,11 +28,10 @@ class MyCompanyForm(forms.ModelForm):
 class MyVacanciesForm(forms.ModelForm):
     class Meta:
         model = Vacancy
-        fields = ('title', 'specialty', 'company', 'skills', 'description', 'salary_min', 'salary_max', 'published_at')
+        fields = ('title', 'specialty', 'skills', 'description', 'salary_min', 'salary_max', 'published_at')
         labels = {
             'title': 'Название вакансии',
             'specialty': 'Специализация',
-            'company': 'Компания',
             'skills': 'Требуемые навыки',
             'description': 'Описание вакансии',
             'salary_min': 'Зарплата от',

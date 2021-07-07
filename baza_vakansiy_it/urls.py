@@ -38,9 +38,9 @@ urlpatterns = [
     path('mycompany/vacancies/create/', MyVacancyCreateView.as_view(), name='vacancy_create_form'), # work
 
     # компании
-    path('mycompany/', MyCompanyView.as_view(), name='mycompany'),
-    path('mycompany/create/', MyCompanyCreateView.as_view(), name='company_create_form'),
     path('mycompany/letsstart/', MyCompanyStartView.as_view(), name='letsstart_mycompany'),
+    path('mycompany/create/', MyCompanyCreateView.as_view(), name='company_create'),
+    path('mycompany/', MyCompanyView.as_view(), name='mycompany'),
 
     # авторизация, регистрация
     path('accounts/', include('accounts.urls'))

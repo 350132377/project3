@@ -29,8 +29,16 @@ class MyCompanyCreateView(View):
 
 class MyCompanyView(View):
     def get(self, request):
-        company = Company.objects.filter(owner_id=request.user.id).first()
+        company = Company.objects.filter(owner_id=request.user.id)
         if company:
             return render(request, 'vacancies/company-edit.html', context={'form': MyCompanyForm})
         else:
             return redirect('company_create')
+
+    def post(self, request):
+        form = MyCompanyForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            # form.save()
+            return redirect('mycompany')
+        return render(request, 'vacancies/company-create.html', context={'form': form})

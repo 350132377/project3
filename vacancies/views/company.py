@@ -29,9 +29,8 @@ class MyCompanyCreateView(View):
 
 class MyCompanyView(View):
     def get(self, request):
-        company = Company.objects.filter(owner_id=request.user.id)
+        company = Company.objects.filter(owner_id=request.user.id).first()
         if company:
-            company = company.first()
             initial = {
                 'title': company.title,
                 'logo': company.logo,
@@ -55,3 +54,9 @@ class MyCompanyView(View):
             # form.save()
             return redirect('mycompany')
         return render(request, 'vacancies/company-create.html', context={'form': form})
+
+def custom_handler404_company(request, exception=None, template_name='vacancies/errors/404.html'):
+    return render(request, template_name)
+
+def custom_handler500_company(request, template_name='vacancies/errors/505.html'):
+    return render(request, template_name)

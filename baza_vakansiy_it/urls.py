@@ -21,7 +21,9 @@ from vacancies.views.main import main_view, company_view, vacancies_by_specialty
 from vacancies.views.company import MyCompanyView, MyCompanyCreateView, MyCompanyStartView
 from vacancies.views.vacancies import vacancies_view, vacancy_send, MyVacanciesListView, MyVacancyView, ApplicationSendView, MyVacancyCreateView
 from django.urls import include
-
+from vacancies.views.main import custom_handler404_main, custom_handler500_main
+from vacancies.views.vacancies import custom_handler404_vacancies, custom_handler500_vacancies
+from vacancies.views.company import custom_handler404_company, custom_handler500_company
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -43,8 +45,27 @@ urlpatterns = [
     path('mycompany/', MyCompanyView.as_view(), name='mycompany'),
 
     # авторизация, регистрация
-    path('accounts/', include('accounts.urls'))
+    path('accounts/', include('accounts.urls')),
+
+    # handlers
+    path('404/', custom_handler404_company),
+    path('505/', custom_handler500_company),
+
+    path('404/', custom_handler404_vacancies),
+    path('505/', custom_handler500_vacancies),
+
+    path('404/', custom_handler404_main),
+    path('505/', custom_handler500_main),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404_company = custom_handler404_company
+handler500_company = custom_handler500_company
+
+handler404_vacancies = custom_handler404_vacancies
+handler500_vacancies = custom_handler500_vacancies
+
+handler404_main = custom_handler404_main
+handler500_main = custom_handler500_main

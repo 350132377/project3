@@ -6,19 +6,17 @@ from vacancies.forms import ApplicationSendForm, MyVacanciesForm
 
 
 
-# work
 def vacancies_view(request):
     return render(request, 'vacancies/vacancies.html', context={
         'specialities': Specialty.objects.all(),
     })
-# work
+
 def vacancy_send(request, vacancy_id):
     vacancy = get_object_or_404(Vacancy, pk=vacancy_id)
     return render(request, 'vacancies/sent.html', context={
         'vacancy': vacancy,
     })
-# отклик на вакансию
-# work
+
 class ApplicationSendView(View):
     def get(self, request, pk):
         vacancy = get_object_or_404(Vacancy, pk=pk)
@@ -39,8 +37,6 @@ class ApplicationSendView(View):
             'vacancy': vacancy,
         })
 
-# список вакансии пользователя
-# work
 class MyVacanciesListView(View):
     def get(self, request):
         try:
@@ -52,8 +48,6 @@ class MyVacanciesListView(View):
             'vacancies': vacancies,
         })
 
-# просмотр вакансии
-# work
 class MyVacancyView(View):
     def get(self, request, vacancy_id):
         vacancy = get_object_or_404(Vacancy, pk=vacancy_id)
@@ -74,8 +68,6 @@ class MyVacancyView(View):
             'vacancy': vacancy,
         })
 
-# создание вакансии
-# work
 class MyVacancyCreateView(View):
     def get(self, request):
         return render(request, 'vacancies/vacancy-create.html', context={
@@ -92,3 +84,9 @@ class MyVacancyCreateView(View):
         return render(request, 'vacancies/vacancy-create.html', context={
             'form': form,
         })
+
+def custom_handler404_vacancies(request, exception=None, template_name='vacancies/errors/404.html'):
+    return render(request, template_name)
+
+def custom_handler500_vacancies(request, template_name='vacancies/errors/505.html'):
+    return render(request, template_name)

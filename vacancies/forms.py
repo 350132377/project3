@@ -16,7 +16,7 @@ class MyCompanyCreateForm(forms.ModelForm):
 class MyCompanyForm(forms.ModelForm):
     class Meta:
         model = Company
-        fields = ('logo', 'title', 'location', 'description', 'employee_count', 'owner')
+        fields = ('title', 'location', 'description', 'employee_count')
         labels = {
             'title': 'Название компании',
             'location': 'География',

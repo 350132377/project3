@@ -33,21 +33,17 @@ urlpatterns = [
     path('companies/<str:company>/', company_view, name='company'),
     path('vacancies/<pk>/', ApplicationSendView.as_view(), name='application_vacancy'),
 
-    # вакансии
     path('vacancies/<vacancy_id>/send/', vacancy_send, name='vacancy_send'), # work
     path('mycompany/vacancies/', MyVacanciesListView.as_view(), name='myvacancy'), # work
     path('mycompany/vacancies/<int:vacancy_id>/', MyVacancyView.as_view(), name='myvacancy_id'), # work
     path('mycompany/vacancies/create/', MyVacancyCreateView.as_view(), name='vacancy_create_form'), # work
 
-    # компании
     path('mycompany/letsstart/', MyCompanyStartView.as_view(), name='letsstart_mycompany'),
     path('mycompany/create/', MyCompanyCreateView.as_view(), name='company_create'),
     path('mycompany/', MyCompanyView.as_view(), name='mycompany'),
 
-    # авторизация, регистрация
     path('accounts/', include('accounts.urls')),
 
-    # handlers
     path('404/', custom_handler404_company),
     path('505/', custom_handler500_company),
 

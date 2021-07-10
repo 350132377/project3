@@ -33,7 +33,6 @@ class MyCompanyView(View):
         if company:
             initial = {
                 'title': company.title,
-                'logo': company.logo,
                 'employee_count': company.employee_count,
                 'location': company.location,
                 'description': company.description,

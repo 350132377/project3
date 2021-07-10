@@ -16,13 +16,13 @@ class MyCompanyCreateForm(forms.ModelForm):
 class MyCompanyForm(forms.ModelForm):
     class Meta:
         model = Company
-        fields = ('title', 'location', 'description', 'employee_count', 'owner')
+        fields = ('logo', 'title', 'location', 'description', 'employee_count', 'owner')
         labels = {
             'title': 'Название компании',
             'location': 'География',
             'description': 'Информация о компании',
             'employee_count': 'Количество человек в компании',
-            'owner': 'Владелец',
+            'owner': 'Владелец компании',
         }
 
 class MyVacanciesForm(forms.ModelForm):

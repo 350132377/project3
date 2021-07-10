@@ -31,9 +31,22 @@ class MyCompanyView(View):
     def get(self, request):
         company = Company.objects.filter(owner_id=request.user.id)
         if company:
-            return render(request, 'vacancies/company-edit.html', context={'form': MyCompanyForm})
+            company = company.first()
+            initial = {
+                'title': company.title,
+                'logo': company.logo,
+                'employee_count': company.employee_count,
+                'location': company.location,
+                'description': company.description,
+            }
+            form = MyCompanyForm(initial=initial)
+            context = {
+                'company': company,
+                'form': form,
+            }
+            return render(request, 'vacancies/company-edit.html', context=context)
         else:
-            return redirect('company_create')
+            return redirect('company_start')
 
     def post(self, request):
         form = MyCompanyForm(request.POST)

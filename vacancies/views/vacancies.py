@@ -3,7 +3,8 @@ from vacancies.models import Specialty, Vacancy, Company
 from django.shortcuts import get_object_or_404
 from django.views import View
 from vacancies.forms import ApplicationSendForm, MyVacanciesForm
-
+from django.contrib import messages
+from django.template import RequestContext
 
 
 def vacancies_view(request):
@@ -48,6 +49,7 @@ class MyVacanciesListView(View):
             'vacancies': vacancies,
         })
 
+
 class MyVacancyView(View):
     def get(self, request, vacancy_id):
         vacancy = get_object_or_404(Vacancy, pk=vacancy_id)
@@ -62,7 +64,8 @@ class MyVacancyView(View):
         if form.is_valid():
             print(form.cleaned_data)
             # form.save()
-            return redirect('myvacancy_id', vacancy_id=vacancy_id)
+            messages.success('Информация о компании обновлена')
+            return redirect('myvacancy_id', RequestContext(request), vacancy_id=vacancy_id)
         return render(request, 'vacancies/vacancy-edit.html', context={
             'form': form,
             'vacancy': vacancy,

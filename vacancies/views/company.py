@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from vacancies.forms import MyCompanyForm, MyCompanyCreateForm
 from vacancies.models import Company
+from django.contrib import messages
 
 
 class MyCompanyStartView(View):
@@ -51,6 +52,7 @@ class MyCompanyView(View):
         if form.is_valid():
             print(form.cleaned_data)
             # form.save()
+            messages.success(request, 'Информация о компании обновлена')
             return redirect('mycompany')
         return render(request, 'vacancies/company-create.html', context={'form': form})
 

@@ -63,6 +63,18 @@
             <!-- Tab -->
             <section class="tab-pane fade show active">
               <h2 class="h4 pt-2 pb-3">Информация о&nbsp;компании</h2>
+              <div class="text-center">
+                <img src="{{ company.logo.url }}" width="130" height="80" alt="">
+              </div>
+              {% if messages %}
+              <ul class="messages">
+                  {% for message in messages %}
+                      <p class="alert alert-info" role="alert">
+                          {{ message|safe }}
+                      </p>
+                  {% endfor %}
+              </ul>
+              {% endif %}
               <form action="" method="post">
                 {% csrf_token %}
                 {{ form|crispy }}

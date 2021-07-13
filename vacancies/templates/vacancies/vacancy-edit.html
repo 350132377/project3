@@ -63,11 +63,19 @@
             <!-- Tab -->
             <section>
               <h2 class="h4 pt-2 pb-3">{{ vacancy.title }}</h2>
-              <p class="alert alert-info" role="alert">Вакансия обновлена</p>
               <form action="" method="post">
                 <input type="submit" class="btn btn-info" value="Сохранить" />
               </form>
               {% csrf_token %}
+              {% if messages %}
+              <ul class="messages">
+                  {% for message in messages %}
+                      <p class="alert alert-info" role="alert">
+                          {{ message|safe }}
+                      </p>
+                  {% endfor %}
+              </ul>
+              {% endif %}
               <form action="" method="post" enctype="multipart/form-data">
                 <div class="row">
                   <div class="col-12 col-md-6">

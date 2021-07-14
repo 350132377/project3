@@ -53,10 +53,24 @@ class MyVacanciesListView(View):
 class MyVacancyView(View):
     def get(self, request, vacancy_id):
         vacancy = get_object_or_404(Vacancy, pk=vacancy_id)
-        return render(request, 'vacancies/vacancy-edit.html', context={
-            'form': MyVacanciesForm,
-            'vacancy': vacancy,
-        })
+        if vacancy:
+            initial = {
+                'title': vacancy.title,
+                'specialty': vacancy.specialty,
+                'skills': vacancy.skills,
+                'description': vacancy.description,
+                'salary_min': vacancy.salary_min,
+                'salary_max': vacancy.salary_max,
+                'published_at': vacancy.published_at,
+            }
+            form = MyVacanciesForm(initial=initial)
+            context = {
+                'vacancy': vacancy,
+                'form': form,
+            }
+            return render(request, 'vacancies/vacancy-edit.html', context=context)
+        else:
+            return redirect('vacancy_create_form')
 
     def post(self, request, vacancy_id):
         vacancy = get_object_or_404(Vacancy, pk=vacancy_id)
@@ -64,8 +78,8 @@ class MyVacancyView(View):
         if form.is_valid():
             print(form.cleaned_data)
             # form.save()
-            messages.success('Информация о компании обновлена')
-            return redirect('myvacancy_id', RequestContext(request), vacancy_id=vacancy_id)
+            messages.success(request, 'Вакансия обновлена')
+            return redirect('myvacancy_id', vacancy_id=vacancy_id)
         return render(request, 'vacancies/vacancy-edit.html', context={
             'form': form,
             'vacancy': vacancy,
@@ -83,6 +97,7 @@ class MyVacancyCreateView(View):
         if form.is_valid():
             print(form.cleaned_data)
             # form.save()
+            messages.success('Вакансия обновлена')
             return redirect('myvacancy_id', vacancy_id=pk)
         return render(request, 'vacancies/vacancy-create.html', context={
             'form': form,

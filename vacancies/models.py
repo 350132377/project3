@@ -20,6 +20,9 @@ class Specialty(models.Model):
     title = models.CharField(max_length=50)
     picture = models.ImageField(upload_to=MEDIA_SPECIALITY_IMAGE_DIR)
 
+    def __str__(self):
+        return self.title
+
 
 class Vacancy(models.Model):
     title = models.CharField(max_length=70)

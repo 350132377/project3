@@ -62,7 +62,15 @@
           <div class="card-body px-4 pb-4 tab-content">
             <!-- Tab -->
             <section>
-              <p class="alert alert-info" role="alert">Вакансия обновлена</p>
+              {% if messages %}
+              <ul class="messages">
+                  {% for message in messages %}
+                      <p class="alert alert-info" role="alert">
+                          {{ message|safe }}
+                      </p>
+                  {% endfor %}
+              </ul>
+              {% endif %}
               <div class="form-group">
                   <form action="" method="post">
                     {% csrf_token %}

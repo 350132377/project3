@@ -1,4 +1,5 @@
 from django import forms
+
 from vacancies.models import Company, Vacancy, Application
 
 

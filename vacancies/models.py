@@ -1,7 +1,6 @@
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.db import models
-
-from django.contrib.auth import get_user_model
 
 from baza_vakansiy_it.settings import MEDIA_COMPANY_IMAGE_DIR, MEDIA_SPECIALITY_IMAGE_DIR
 

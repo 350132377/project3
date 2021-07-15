@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
-from vacancies.models import Specialty, Vacancy, Company
-from django.shortcuts import get_object_or_404
-from django.views import View
-from vacancies.forms import ApplicationSendForm, MyVacanciesForm
 from django.contrib import messages
-from django.template import RequestContext
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render, redirect
+from django.views import View
+
+from vacancies.forms import ApplicationSendForm, MyVacanciesForm
+from vacancies.models import Specialty, Vacancy, Company
 
 
 def vacancies_view(request):

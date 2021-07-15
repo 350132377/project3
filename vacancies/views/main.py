@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from vacancies.models import Company, Specialty
 
+from vacancies.models import Company, Specialty
 
 
 def main_view(request):

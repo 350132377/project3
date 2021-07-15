@@ -13,17 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from vacancies.views.main import main_view, company_view, vacancies_by_specialty
-from vacancies.views.company import MyCompanyView, MyCompanyCreateView, MyCompanyStartView
-from vacancies.views.vacancies import vacancies_view, vacancy_send, MyVacanciesListView, MyVacancyView, ApplicationSendView, MyVacancyCreateView
+from django.contrib import admin
 from django.urls import include
-from vacancies.views.main import custom_handler404_main, custom_handler500_main
-from vacancies.views.vacancies import custom_handler404_vacancies, custom_handler500_vacancies
+from django.urls import path
+
+from vacancies.views.company import MyCompanyView, MyCompanyCreateView, MyCompanyStartView
 from vacancies.views.company import custom_handler404_company, custom_handler500_company
+from vacancies.views.main import custom_handler404_main, custom_handler500_main
+from vacancies.views.main import main_view, company_view, vacancies_by_specialty
+from vacancies.views.vacancies import custom_handler404_vacancies, custom_handler500_vacancies
+from vacancies.views.vacancies import vacancies_view, vacancy_send, MyVacanciesListView, MyVacancyView, \
+    ApplicationSendView, MyVacancyCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,10 +35,10 @@ urlpatterns = [
     path('companies/<str:company>/', company_view, name='company'),
     path('vacancies/<pk>/', ApplicationSendView.as_view(), name='application_vacancy'),
 
-    path('vacancies/<vacancy_id>/send/', vacancy_send, name='vacancy_send'), # work
-    path('mycompany/vacancies/', MyVacanciesListView.as_view(), name='myvacancy'), # work
-    path('mycompany/vacancies/<int:vacancy_id>/', MyVacancyView.as_view(), name='myvacancy_id'), # work
-    path('mycompany/vacancies/create/', MyVacancyCreateView.as_view(), name='vacancy_create_form'), # work
+    path('vacancies/<vacancy_id>/send/', vacancy_send, name='vacancy_send'),
+    path('mycompany/vacancies/', MyVacanciesListView.as_view(), name='myvacancy'),
+    path('mycompany/vacancies/<int:vacancy_id>/', MyVacancyView.as_view(), name='myvacancy_id'),
+    path('mycompany/vacancies/create/', MyVacancyCreateView.as_view(), name='vacancy_create_form'),
 
     path('mycompany/letsstart/', MyCompanyStartView.as_view(), name='letsstart_mycompany'),
     path('mycompany/create/', MyCompanyCreateView.as_view(), name='company_create'),

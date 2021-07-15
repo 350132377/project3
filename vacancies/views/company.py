@@ -1,8 +1,9 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.views import View
+
 from vacancies.forms import MyCompanyForm, MyCompanyCreateForm
 from vacancies.models import Company
-from django.contrib import messages
 
 
 class MyCompanyStartView(View):

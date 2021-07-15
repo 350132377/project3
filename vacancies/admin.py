@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from vacancies.models import Vacancy, Company, Application, Specialty
 
 

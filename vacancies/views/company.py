@@ -25,7 +25,6 @@ class MyCompanyCreateView(View):
         form = MyCompanyCreateForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
-            # form.save()
             return redirect('mycompany')
         return render(request, 'vacancies/company-create.html', context={'form': form})
 
@@ -52,7 +51,6 @@ class MyCompanyView(View):
         form = MyCompanyForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
-            # form.save()
             messages.success(request, 'Информация о компании обновлена')
             return redirect('mycompany')
         return render(request, 'vacancies/company-create.html', context={'form': form})

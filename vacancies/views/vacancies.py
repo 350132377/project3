@@ -31,7 +31,6 @@ class ApplicationSendView(View):
         form = ApplicationSendForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
-            # form.save()
             return redirect('vacancy_send', vacancy_id=pk)
         return render(request, 'vacancies/vacancy.html', context={
             'form': form,
@@ -77,7 +76,6 @@ class MyVacancyView(View):
         form = MyVacanciesForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
-            # form.save()
             messages.success(request, 'Вакансия обновлена')
             return redirect('myvacancy_id', vacancy_id=vacancy_id)
         return render(request, 'vacancies/vacancy-edit.html', context={
@@ -96,7 +94,6 @@ class MyVacancyCreateView(View):
         form.specialty_id = Specialty.objects.filter(code=code)
         if form.is_valid():
             print(form.cleaned_data)
-            # form.save()
             messages.success('Вакансия обновлена')
             return redirect('myvacancy_id', vacancy_id=pk)
         return render(request, 'vacancies/vacancy-create.html', context={

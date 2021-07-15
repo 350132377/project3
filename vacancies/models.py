@@ -14,6 +14,7 @@ class Company(models.Model):
     owner = models.OneToOneField(get_user_model(), on_delete=models.CASCADE, null=True)
 
 
+
 class Specialty(models.Model):
     code = models.CharField(max_length=20, unique=True)
     title = models.CharField(max_length=50)
